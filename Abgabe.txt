@@ -1,0 +1,59 @@
+a)
+
+- Linux benni-VirtualBox 4.13.0-38-generic #43-Ubuntu SMP Wed Mar 14 15:20:44 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+
+-Ubuntu 17.10 \n \l
+
+-gcc (Ubuntu 7.2.0-8ubuntu3.2) 7.2.0
+Copyright (C) 2017 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+-14:48:58 up 2 min,  1 user,  load average: 0,37, 0,33, 0,14
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+benni    tty2     /dev/tty2        14:47    2:09  48.39s  0.06s update-notifier
+
+b)
+
+-man is the system's manual pager.  Each page argument given to  man  is
+       normally  the  name of a program, utility or function.  The manual page
+       associated with each of these arguments is then found and displayed.  A
+       section,  if  provided, will direct man to look only in that section of
+       the manual.  The default action is to search in all  of  the  available
+       sections  following  a pre-defined order ("1 n l 8 3 2 3posix 3pm 3perl
+       3am 5 4 9 6 7" by default, unless overridden by the  SECTION  directive
+       in /etc/manpath.config), and to show only the first page found, even if
+       page exists in several sections.
+
+
+-grep  searches  for  PATTERN  in  each  FILE.  A FILE of “-” stands for
+       standard input.  If no FILE is given, recursive  searches  examine  the
+       working  directory,  and nonrecursive searches read standard input.  By
+       default, grep prints the matching lines.
+
+
+
+-NAME
+       cat - concatenate files and print on the standard output
+
+SYNOPSIS
+       cat [OPTION]... [FILE]...
+
+
+
+c)
+
+-git init
+
+-git add A.txt B.txt C.txt
+ git commit -m "add A B C"
+
+-git status
+
+-git log
+
+d)
+
+- convert A.pdf B.png C.jpg +compress XYZ.pdf
+
+-

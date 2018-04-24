@@ -1,0 +1,123 @@
+\documentclass[a4paper,graphics,11pt]{article}
+\pagenumbering{arabic}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath, tabu}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{complexity}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{graphicx,color,curves,epsf,float,rotating}
+\usepackage{tasks}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+\newcommand{\aufgabe}[1]{\subsection*{Aufgabe #1}}
+\newcommand{\up}[2]{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny #2}}}{#1}}}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+    language=Java,
+    aboveskip=2mm,
+    belowskip=2mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=4,
+    literate={ä}{{\"a}}1 {Ä}{{\"A}}1 {ö}{{\"o}}1 {Ö}{{\"O}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1
+}
+
+\begin{document}
+\noindent Gruppe \fbox{\textbf{20}}             \hfill Benedikt Gerlach, 376944\\
+\noindent Betriebssysteme und Systemsoftware       \hfill Sebastian Hackenberg, 377550\\
+\begin{center}
+	\LARGE{\textbf{Übung 0}}
+\end{center}
+\begin{center}
+\rule[0.1ex]{\textwidth}{1pt}
+\end{center}
+
+\aufgabe{0.1}
+\textbf{a)}\\
+Ausgabe von uname -a:
+
+\textit{Linux benni-VirtualBox 4.13.0-38-generic \#43-Ubuntu SMP Wed Mar 14 15:20:44 UTC 2018 x86\_64 x86\_64 x86\_64 GNU/Linux}\\
+
+Ausgabe von cat /etc/issue:
+
+\textit{Ubuntu 17.10 \textbackslash n \textbackslash l}\\
+
+Ausgabe von gcc --version:
+
+\textit{gcc (Ubuntu 7.2.0-8ubuntu3.2) 7.2.0
+Copyright (C) 2017 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.}\\
+
+Ausgabe von w:
+
+\textit{14:48:58 up 2 min,  1 user,  load average: 0,37, 0,33, 0,14\\
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT\\
+benni    tty2     \textbackslash dev\textbackslash tty2        14:47    2:09  48.39s  0.06s update-notifier}\\
+
+\textbf{b)}\\
+Ausgabe von man man:
+ 
+\textit{man is the system's manual pager.  Each page argument given to  man  is
+normally  the  name of a program, utility or function...}\\
+
+Ausgabe von man grep:
+
+\textit{grep  searches  for  PATTERN  in  each  FILE.  A FILE of “-” stands for
+standard input...}\\
+
+\newpage
+
+Ausgabe von man cat:
+
+\textit{NAME cat - concatenate files and print on the standard output...}\\
+
+\aufgabe{0.2}
+
+\textbf{a)} Initialisierung des Verzeichnises als GIT Repository:
+
+\textit{git init}\\
+
+\textbf{b)}Registrierung und Commit:
+
+\textit{git add A.txt B.txt C.txt \\
+	git commit -m "\ add A B C"}\\
+
+\textbf{c)}Unterschiede zum letzten Commit:
+
+\textit{git status}\\
+
+\textbf{d)}Überblick der vorhandenen Commits:
+
+\textit{git log}\\
+
+\aufgabe{0.3}
+
+\textbf{a)}In PDF convertieren:
+
+\textit{convert A.pdf B.png C.jpg +compress XYZ.pdf}\\
+
+\end{document}
