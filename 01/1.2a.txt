@@ -1,0 +1,2 @@
+tr -d '"?.!:;,+\&‘' < wotw.txt > wotwNeu.txt
+tr -s " " < wotwNeu.txt > wotwNeu2.txt

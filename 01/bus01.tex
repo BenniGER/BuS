@@ -56,10 +56,54 @@
 \rule[0.1ex]{\textwidth}{1pt}
 \end{center}
 
-\aufgabe{1}
+\aufgabe{1.1}
 \textbf{a)}
 
-\textit{echo "BuS 2016: Abgabe der 1. Uebung am 6.5" | sed -e s/6/7/}
+\lstinputlisting{1.1a.txt}
+
+\textbf{b)}
+
+Der Befehl bewirkt folgendes: \textit{-d ’ ’} beschreibt das zeichen das die felder trennt. \textit{-f 1} = nur das erste Feld ausgeben. \textit{d*} = ka
+
+\textbf{c)}
+
+Der Befehl :
+
+\lstinputlisting{grepBefehl.txt}
+
+Erkennt die Adresse:
+
+Arthur Dent\\
+Galaxy 7\\
+74369 Third Orbit
+
+Welche sich in den Zeilen 10034 bis 19036 befindet. Die E-Mail wurde von realArthurDent@posteo.de verschickt und von emily.saunders@mostlyharmless.com erhalten.\\
+
+\aufgabe{1.2}
+\textbf{a)}
+
+\lstinputlisting{1.2a.txt}
+Zeile 1: Entfernt alle " ? . ! : ; , +  \& ‘  und speichert die Datei unter wotwNeu.txt\\
+Zeile 2: Entfernt alle sich wiederholenden Leerzeichen aus wotwNeu.txt und speichert die Datei unter wotwNeu2.txt\\
+
+\newpage
+
+\textbf{b)}\\
+
+\lstinputlisting{1.2b.txt}
+
+Das Ergebnis ist 122.
+
+\textbf{c)}\\
+
+\lstinputlisting{1.2c.txt}
+
+Das Ergebnis ist 12223 absolute Häufigkeit, 4417 the, 2373 and, 2284 of, 1554 a, 1300 I, 1160 to, 924 in, 853 was und 754 that.
+
+\aufgabe{1.3}
+\textbf{a)}
+
+Ein Systemcall bzw. Syscall ist eine Methode um vom Betriebssystem bereitgestellte Funktionalitäten auszuführen, wie zum Beispiel das Schreiben einer Datei. Dabei wird die Kontrolle vom Programm an den Kernel übergeben.
 
 \textbf{b)}
 
