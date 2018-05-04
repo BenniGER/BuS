@@ -111,4 +111,24 @@ Ein Systemcall bzw. Syscall ist eine Methode um vom Betriebssystem bereitgestell
 
 \textbf{b)}
 
+\textit{execve}
+
+\textit{open} = Aufruf einer Datei File Management
+
+\textit{stat}
+
+\textit{mmap}
+
+\textbf{c)}
+
+\textit{strace} = diagnostic tool welchen den Prozess mit dem es gestartet wurde überwacht und alle syscalls die es aufruft speichert.
+
+\textbf{d)}
+
+strace ls /etc -C -e trace=execve,stat,lstat,fstat,open,openat,getdents,readdir
+
+strace ls -l /etc -C -e trace=execve,stat,lstat,fstat,open,openat,getdents,readdir
+
+(weiterleitung der ausgabe mit > )
+
 \end{document}
