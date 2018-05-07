@@ -1,1 +1,0 @@
-tr ' ' '\n' < wotw.txt | grep road | wc -l

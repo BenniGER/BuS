@@ -1,1 +1,0 @@
-echo "BuS 2016: Abgabe der 1. Uebung am 6.5" | sed -e s/6/7/

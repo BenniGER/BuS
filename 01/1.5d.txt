@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+float celsius_zu_fahrenheit(float temperatur) {
+    return (float) 9/(float) 5 * temperatur + (float) 32;
+}
+
+int main()
+{
+  float celsius, fahrenheit; /* Gleitkommavariablen */
+
+  printf("Temperatur in Celsius: ");
+  scanf("%f", &celsius);
+
+  fahrenheit = celsius_zu_fahrenheit(celsius); 
+
+  printf("Temperatur in Fahrenheit: %f\n",fahrenheit);
+}

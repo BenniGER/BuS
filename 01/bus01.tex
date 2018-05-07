@@ -59,7 +59,9 @@
 \aufgabe{1.1}
 \textbf{a)}
 
-\lstinputlisting{1.1a.txt}
+\begin{verbatim}
+echo "BuS 2016: Abgabe der 1. Uebung am 6.5" | sed -e s/6/7/
+\end{verbatim}
 
 \textbf{b)}
 \textbf{TODO}
@@ -70,7 +72,12 @@ Der Befehl bewirkt folgendes: \textit{-d ’ ’} beschreibt das zeichen das die
 
 Der Befehl :
 
-\lstinputlisting{grepBefehl.txt}
+\begin{verbatim}
+grep -A3 -E ^[[:alpha:]]\+[[:space:]]\+[[:alpha:]]\+$ emails 
+| grep -B1 -A1 -E ^[[:alpha:]]\+[[:space:]]\+[[:digit:]]\+$
+\end{verbatim}
+
+
 
 Erkennt die Adresse:
 
@@ -91,17 +98,23 @@ tr -s " " < wotwNeu.txt > wotwNeu2.txt
 Zeile 1: Entfernt alle " ? . ! : ; , +  \& ‘  und speichert die Datei unter wotwNeu.txt\\
 Zeile 2: Entfernt alle sich wiederholenden Leerzeichen aus wotwNeu.txt und speichert die Datei unter wotwNeu2.txt\\
 
-\newpage
 
 \textbf{b)}\\
 
-\lstinputlisting{1.2b.txt}
+\begin{verbatim}
+tr ' ' '\n' < wotw.txt | grep road | wc -l
+\end{verbatim}
+
+
 
 Das Ergebnis ist 122.
 
 \textbf{c)}\\
 
-\lstinputlisting{1.2c.txt}
+\begin{verbatim}
+tr -c '[:alnum:]' '[\n*]' < wotw.txt | sort | uniq -c | sort -nr | head  -10
+\end{verbatim}
+
 
 Das Ergebnis ist 12223 absolute Häufigkeit, 4417 the, 2373 and, 2284 of, 1554 a, 1300 I, 1160 to, 924 in, 853 was und 754 that.
 
@@ -137,8 +150,25 @@ strace ls -l /etc -C -e trace=execve,stat,lstat,fstat,open,openat,getdents,readd
 \aufgabe{1.4}
 \textbf{TODO}
 
+\textbf{a)}
+
+str[1] = ’0’; = setzt den zweiten Array Eintrag auf 0.
+
+\textbf{b)}
+
+i = *(list + 3); = setzt i auf 7
+
+
 \aufgabe{1.5}
 \textbf{TODO}
+
+\textbf{a)}
+
+Rundungsproblem float zu int.
+
+\textbf{b)}
+
+\lstinputlisting{1.5d.txt}
 
 \aufgabe{1.6}
 \textbf{TODO}

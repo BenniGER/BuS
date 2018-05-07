@@ -1,2 +1,0 @@
-grep -A3 -E ^[[:alpha:]]\+[[:space:]]\+[[:alpha:]]\+$ emails 
-| grep -B1 -A1 -E ^[[:alpha:]]\+[[:space:]]\+[[:digit:]]\+$
