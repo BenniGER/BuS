@@ -91,7 +91,6 @@ Welche sich in den Zeilen 10034 bis 19036 befindet. Die E-Mail wurde von realArt
 
 \aufgabe{1.2}
 \textbf{a)}
-
 \begin{verbatim}
 tr -s " " < wotwNeu.txt | tr -s " " > wotwNeu.txt
 \end{verbatim}
@@ -159,7 +158,7 @@ strace ls -l /etc -C -e trace=execve,stat,lstat,fstat,open,openat,getdents,readd
 
 \textbf{c)}
 
-\textit{pi =  \&list[i];} $\Longrightarrow$ Durch den Befehl wird versucht den Zeiger pi auf den int wert von list[7] zu zeigen. Da list aber nur 4 Elemente hat ist dieser Befehl nicht möglich.
+\textit{pi =  } \&\textit{list[i];} $\Longrightarrow$ Durch den Befehl wird versucht den Zeiger pi auf den int wert von list[7] zu zeigen. Da list aber nur 4 Elemente hat ist dieser Befehl nicht möglich.
 
 \textbf{d)}
 
