@@ -64,9 +64,9 @@ echo "BuS 2016: Abgabe der 1. Uebung am 6.5" | sed -e s/6/7/
 \end{verbatim}
 
 \textbf{b)}
-\textbf{TODO}
 
-Der Befehl bewirkt folgendes: \textit{-d ’ ’} beschreibt das zeichen das die felder trennt. \textit{-f 1} = nur das erste Feld ausgeben. \textit{d*} = ka
+Der Befehl gibt von jeder Zeile der Datei \textit{d*} das erste Wort, also alles was vor dem ersten Leerzeichen jeder Zeile steht, aus. \textit{-d ' '} beschreibt dabei, welches zeichen als Trennzeichen verwendet wird, der Text wird also als eine Tabelle aufgefasst wobei jedes Leerzeichen in einer Zeile für eine weitere Spalte steht. Nun beschreibt \textit{-f 1}, dass die erste Spalte ausgegeben werden soll, also das erste Wort. Das \textit{d*} am Ende beschreibt die Datei, aus welcher die Information gelesen werden soll.
+
 
 \textbf{c)}
 
@@ -126,15 +126,15 @@ Das Ergebnis ist 12223 absolute Häufigkeit, 4417 the, 2373 and, 2284 of, 1554 a
 Ein Systemcall bzw. Syscall ist eine Methode um vom Betriebssystem bereitgestellte Funktionalitäten auszuführen, wie zum Beispiel das Schreiben einer Datei. Dabei wird die Kontrolle vom Programm an den Kernel übergeben.
 
 \textbf{b)}
-\textbf{TODO}
 
-\textit{execve}
+\textit{execve} = Ausführen einer ausführbaren Datei (z.B. .out Datei) oder interpretieren der Datei durch in der Datei definierten Interpreter.
 
 \textit{open} = Aufruf einer Datei File Management
 
-\textit{stat}
+\textit{stat} = Status einer Datei oder eines Dateisystems anzeigen (Speicherverbrauch, Zugriffzeitpunkt... ).
 
-\textit{mmap}
+\textit{mmap} = Bildet eine Datei oder ein Gerät im virtuellen Speicher ab. (ka ob das so stimmt...)
+
 
 \textbf{c)}
 
@@ -214,3 +214,4 @@ Es ist möglich das Programm ohne explizite Typkonvertierung zu lösen indem man
 \textbf{10.} Da b auf a[5] zeigt wird a[5] auf 10 gesetzt. Nun hat das Array folgende Einträge a[]={2,13,23,42,13,10}.
 
 \end{document}
+\grid
