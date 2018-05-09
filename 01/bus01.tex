@@ -87,6 +87,8 @@ Galaxy 7\\
 
 Welche sich in den Zeilen 10034 bis 19036 befindet. Die E-Mail wurde von realArthurDent@posteo.de verschickt und von emily.saunders@mostlyharmless.com erhalten.\\
 
+\newpage
+
 \aufgabe{1.2}
 \textbf{a)}
 
@@ -99,7 +101,7 @@ Zeile 1: Entfernt alle " ? . ! : ; , +  \& ‘  und speichert die Datei unter wo
 Zeile 2: Entfernt alle sich wiederholenden Leerzeichen aus wotwNeu.txt und speichert die Datei unter wotwNeu2.txt\\
 
 
-\textbf{b)}\\
+\textbf{b)}
 
 \begin{verbatim}
 tr ' ' '\n' < wotw.txt | grep road | wc -l
@@ -109,7 +111,7 @@ tr ' ' '\n' < wotw.txt | grep road | wc -l
 
 Das Ergebnis ist 122.
 
-\textbf{c)}\\
+\textbf{c)}
 
 \begin{verbatim}
 tr -c '[:alnum:]' '[\n*]' < wotw.txt | sort | uniq -c | sort -nr | head  -10
@@ -177,10 +179,11 @@ strace ls -l /etc -C -e trace=execve,stat,lstat,fstat,open,openat,getdents,readd
 
 \textit{str[3]=’4’;} $\Longrightarrow$ Da str nur 3 Einträge hat ist die abfrage des vierten Eintrags nicht möglich.
 
+\newpage
+
 \aufgabe{1.5}
 
-
-\textbf{a)}\textbf{TODO}
+\textbf{a)}
 
 Rundungsproblem float zu int.
 
@@ -193,6 +196,21 @@ Rundungsproblem float zu int.
 Es ist möglich das Programm ohne explizite Typkonvertierung zu lösen indem man 9/5 durch 1.8 ersetzt.
 
 \aufgabe{1.6}
-\textbf{TODO}
+
+\textbf{3.} b zeigt vor dem Aufruf auf a[0]. Durch b++; zeigt b nun auf a[1].
+
+\textbf{4.} t1 wird der Wert zugewiesen der in der Speicheradresse von b steht. Also wir t1 = 11. (Dereferenzierung)
+
+\textbf{5.} Der Pointervariable c wird die Speicheradresse von b zugewiesen. (Referenzierung)
+
+\textbf{6.} c erhält den Wert der in der Speicheradresse steht und erhöht ihm um zwei. Nun hat das Array folgende Einträge a[]={2,13,23,42,13,37}. (2x Dereferenzierung)
+
+\textbf{7.} c erhält den wert 13, demnach erhält t2 den Wert 14.(2x Dereferenzierung)
+
+\textbf{8.} **c zeigt auf a[1]=13 und a[3]=42, demnach ist t3 = 42\&13. Der \& operator ist in diesem Fall ein bitweises UND. Somit ist t3 = 8.
+
+\textbf{9.} b zeigt nun auf a[5], weil b = a+5 $\Longleftrightarrow$ b = \&a[5].
+
+\textbf{10.} Da b auf a[5] zeigt wird a[5] auf 10 gesetzt. Nun hat das Array folgende Einträge a[]={2,13,23,42,13,10}.
 
 \end{document}
