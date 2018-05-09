@@ -148,16 +148,34 @@ strace ls -l /etc -C -e trace=execve,stat,lstat,fstat,open,openat,getdents,readd
 (weiterleitung der ausgabe mit > )
 
 \aufgabe{1.4}
-\textbf{TODO}
 
 \textbf{a)}
 
-str[1] = ’0’; = setzt den zweiten Array Eintrag auf 0.
+\textit{str[1] = ’0’;} $\Longrightarrow$ setzt den zweiten Eintrag des char Arrays str auf 0. str hat nun die werte 102.
 
 \textbf{b)}
 
-i = *(list + 3); = setzt i auf 7
+\textit{i = *(list + 3);} $\Longrightarrow$ setzt den wert von list[3] auf 7
 
+\textbf{c)}
+
+\textit{pi =  \&list[i];} $\Longrightarrow$ Durch den Befehl wird versucht den Zeiger pi auf den int wert von list[7] zu zeigen. Da list aber nur 4 Elemente hat ist dieser Befehl nicht möglich.
+
+\textbf{d)}
+
+\textit{*pi = 42;} $\Longrightarrow$ Auf den Speicherbereich auf den pi zeigt soll der int wert 42 geschrieben werden. Da pi aber noch nicht initialisiert ist, könnte der Compiler einen Fehler werfen.
+
+\textbf{e)}
+
+\textit{list = pi;} $\Longrightarrow$ Durch diesen Befehl soll die Basisadresse von list auf die Adresse auf die der Zeiger von pi zeigt gelegt werden, da das Array nun aber keinen zusammenhängenden Speicherbereich mehr hat ist das ein Fehler.
+
+\textbf{f)}
+
+\textit{i = *(pi + 2);} $\Longrightarrow$ Da pi immer noch nicht initialisiert ist, ist es unklar worauf pi zeigt. Demnach ist der Zuweisung auf den 2 Speicherbereich nach pi nicht möglich.
+
+\textbf{g)}
+
+\textit{str[3]=’4’;} $\Longrightarrow$ Da str nur 3 Einträge hat ist die abfrage des vierten Eintrags nicht möglich.
 
 \aufgabe{1.5}
 
