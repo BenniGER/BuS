@@ -93,12 +93,10 @@ Welche sich in den Zeilen 10034 bis 19036 befindet. Die E-Mail wurde von realArt
 \textbf{a)}
 
 \begin{verbatim}
-tr -d '"?.!:;,+\&‘' < wotw.txt > wotwNeu.txt
-tr -s " " < wotwNeu.txt > wotwNeu2.txt
+tr -s " " < wotwNeu.txt | tr -s " " > wotwNeu.txt
 \end{verbatim}
 
-Zeile 1: Entfernt alle " ? . ! : ; , +  \& ‘  und speichert die Datei unter wotwNeu.txt\\
-Zeile 2: Entfernt alle sich wiederholenden Leerzeichen aus wotwNeu.txt und speichert die Datei unter wotwNeu2.txt\\
+Der Befehl speichert das angepasste Dokument als wotwNeu.txt\\
 
 
 \textbf{b)}
