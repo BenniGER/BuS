@@ -79,7 +79,7 @@ grep -A3 -E ^[[:alpha:]]\+[[:space:]]\+[[:alpha:]]\+$ emails
 
 
 
-Erkennt die Adresse:
+Findet die Adresse:
 
 Arthur Dent\\
 Galaxy 7\\
@@ -137,14 +137,11 @@ Ein Systemcall bzw. Syscall ist eine Methode um vom Betriebssystem bereitgestell
 
 \textit{strace} = diagnostic tool welchen den Prozess mit dem es gestartet wurde überwacht und alle syscalls die es aufruft speichert.
 
+\newpage
+
 \textbf{d)}
-\textbf{TODO}
 
-strace ls /etc -C -e trace=execve,stat,lstat,fstat,open,openat,getdents,readdir
-
-strace ls -l /etc -C -e trace=execve,stat,lstat,fstat,open,openat,getdents,readdir
-
-(weiterleitung der ausgabe mit > )
+Es gibt zwischen ls und ls -l bzgl. der Systemcall nur Unterschiede in den Speicheradressen und deren Werte. Beide Kommandos nutzen demnach gleich viele Systemcalls.
 
 \aufgabe{1.4}
 
@@ -182,7 +179,7 @@ strace ls -l /etc -C -e trace=execve,stat,lstat,fstat,open,openat,getdents,readd
 
 \textbf{a)}
 
-Rundungsproblem float zu int.
+Das Hauptproblem des Quelltextes ist ein Rundungsproblem zwischen float zu int.
 
 \textbf{b)}\\
 
