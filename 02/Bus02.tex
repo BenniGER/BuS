@@ -14,6 +14,7 @@
     \usepackage{setspace}
     \usepackage{graphicx,color,curves,epsf,float,rotating}
     \usepackage{tasks}
+    \usepackage[noeepic]{qtree}
     \setlength{\parindent}{0em}
     \setlength{\parskip}{1em}
     
@@ -69,5 +70,23 @@
     Ein Zombie-Prozess ist ein Kindprozess, welcher beendet wurde, bei dem der Vaterprozess allerdings noch keine Statusabfrage durchgeführt hat. Dies erklärt nämlich auch den Grund für das existieren von Zombie Prozessen, sie geben dem Vaterprozess die Möglichkeit, herauszufinden, wie der Kindprozess terminiert hat (erfolgreich, mit Fehler,...). Der Zombieprozess verbraucht dabei kaum Arbeitsspeicher, da nur noch der Eintrag in der Prozesstabelle existiert.
 
     \aufgabe{1.3}
+
+    \textbf{a)}
+
+    Die Zahlen in den inneren Knoten stehen jeweils für die Zeile des aufgerufenen \verb+fork()+ Befehls.
+
+    \begin{figure}[h]
+        \Tree [.5
+                [.7 {B} {AC} ] 
+                [.13 
+                    [.15 {E} {DF} ] 
+                    [.15 {E} {DF} ] 
+                ]
+        ]
+    \end{figure}
+
+    \textbf{b)}
+
+    Angenommen, der linke Teilbaum wird als erstes abgearbeitet, kann man sagen, dass zunächst \verb+A+, dann \verb+B+, gefolgt von \verb+C+ ausgegeben wird, da der zweite Vaterprozess in Zeile 9 auf die Terminierung eines Kindes wartet. Über den rechten Teilbaum kann man sagen, dass auf jeden Fall ein D ausgegeben wird, bevor ein E oder F ausgegeben wird. Ansonsten ist die Reihenfolge unklar, da man nicht sagen kann, welcher Prozess zuerst ausgeführt wird.
     
     \end{document}
