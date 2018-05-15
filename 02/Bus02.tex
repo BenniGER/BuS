@@ -60,7 +60,13 @@
 
     \aufgabe{1.2}
 
-    
+    \textbf{b)}
+
+    Das Kommando \verb+fflush+ bei \verb+fprintf+ bewirkt, dass der Text aus dem Buffer ausgegeben wird. Da bei \verb+fprintf+ der auszugebende Text zunächst nur in den Buffer geschrieben wird, welcher erst ausgegeben wird, wenn er voll ist, kann es dazu kommen, dass auszugebender Text nicht ausgegeben wird, da der Buffer noch nicht voll ist. Also kann man den Buffer bereits vorher mit dem Befehl \verb+fflush+ ausgeben. Bei \verb+write+ wird der Text sofort ausgegeben, wobei intern auch zunächst der Text in einen Buffer geschrieben wird, welcher dann jedes mal direkt ausgegeben wird. Daher ist \verb+fprintf+ ganz allgemein auch effizienter, da das ausgeben der Buffers auf den Bildschirm auch Rechenzeit benötigt, was bei \verb+fprintf+ weniger oft gemacht werden kann.
+
+    \textbf{c)}
+
+    Ein Zombie-Prozess ist ein Kindprozess, welcher beendet wurde, bei dem der Vaterprozess allerdings noch keine Statusabfrage durchgeführt hat. Dies erklärt nämlich auch den Grund für das existieren von Zombie Prozessen, sie geben dem Vaterprozess die Möglichkeit, herauszufinden, wie der Kindprozess terminiert hat (erfolgreich, mit Fehler,...). Der Zombieprozess verbraucht dabei kaum Arbeitsspeicher, da nur noch der Eintrag in der Prozesstabelle existiert.
 
     \aufgabe{1.3}
     
