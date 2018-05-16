@@ -26,8 +26,8 @@ int main(void)
             fprintf(stdout, "Anzahl von: A: %i, B: %i, C: %i\n", a,b,c);
             fflush(stdout);
             a = 0;
-            a = 0;
-            a = 0;
+            b = 0;
+            c = 0;
             count = 0;
         }
     }
