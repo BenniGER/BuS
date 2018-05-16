@@ -79,11 +79,14 @@
 
     Ein Zombie-Prozess ist ein Kindprozess, welcher beendet wurde, bei dem der Vaterprozess allerdings noch keine Statusabfrage durchgeführt hat. Dies erklärt nämlich auch den Grund für das existieren von Zombie Prozessen, sie geben dem Vaterprozess die Möglichkeit, herauszufinden, wie der Kindprozess terminiert hat (erfolgreich, mit Fehler,...). Der Zombieprozess verbraucht dabei kaum Arbeitsspeicher, da nur noch der Eintrag in der Prozesstabelle existiert.
 
-	\textbf{d)}
+    \textbf{d)}
+    
+    Das speichern der PID des Vaterprozesses ist nötig, damit der Kindprozess weiß, zu welchem Prozess er gehört. 
 	
 	\textbf{e)}    
     
-    
+    Siehe \texttt{analyse.c}\\
+    Über die Verteilung der Rechenverteilung auf Vater- und Kindprozesse lässt sich nicht genau etwas sagen, da es von System zu System variiert, vor allem scheint es an der Art, wie man Linux nutzt, zu liegen, da bei Linux als Subsystem in Windows z.B. der Vaterprozess eindeutig benachteiligt wird, während bei Linux als Dualboot, oder alleine auf dem Rechner, die Verteilung ziemlich gleich ist, also jeder Prozess ähnlich viel Rechenzeit bekommt.
     
     
     \aufgabe{2.3}
