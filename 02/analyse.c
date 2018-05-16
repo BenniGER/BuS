@@ -4,20 +4,30 @@
 int main(void)
 {
     int count = 0;
-    int characters[3];
-    characters[0] = 0;
-    characters[1] = 0;
-    characters[2] = 0;
+    int a = 0;
+    int b = 0;
+    int c = 0;
+    char character;
 
-    while (1) {
-        characters[getc(stdin)-65]++;
+    while (character = getc(stdin)) {
+        switch(character) {
+            case 'A': 
+                a++;
+                break;
+            case 'B':
+                b++;
+                break;
+            case 'C':
+                c++;
+                break;
+        }
         count++;
-        if (count >= 100) {
-            fprintf(stdout, "Anzahl von: A: %i, B: %i, C: %i\n", characters);
+        if (count >= 100000) {
+            fprintf(stdout, "Anzahl von: A: %i, B: %i, C: %i\n", a,b,c);
             fflush(stdout);
-            characters[0] = 0;
-            characters[1] = 0;
-            characters[2] = 0;
+            a = 0;
+            a = 0;
+            a = 0;
             count = 0;
         }
     }
