@@ -16,38 +16,25 @@ bool is_empty(stud_type** liste) {
     return *liste == NULL;
 }
 
-void sortier_liste(stud_type** studenten_liste){
-
-}
-
-void sort_vorname(stud_type** studenten_liste) {
-
-}
-
-void sort_nachname(stud_type** studenten_liste) {
-
-}
-
-
-/* Einfuegen eines Elementes
- *
+/* Einfuegen eines Elementes    
+ * 
  * Bekommt einen Zeiger auf einen Zeiger der auf das 1. Element der Liste zeigt
- * Bekommt MatNr, Vorname und Nachname des Studenten der Eingefuegt werden soll
+ * Bekommt MatNr, Vorname und Nachname des Studenten der Eingefügt werden soll
  *
  */
 void enqueue(stud_type** studenten_liste, int matnum, char vorname[20], char nachname[20])
 {
-    /* Deklariere benoetigte Variablen */
+    /* Deklariere benötigte Variablen */
 	stud_type* new_student;
 	stud_type* pcur;
-    stud_type* previous;
-    /* Hol Speicher auf dem Heap an fuer den neuen Listen Eintrag */
+    	stud_type* previous;
+    /* Hol Speicher auf dem Heap an für den neuen Listen Eintrag */
 	new_student = malloc(sizeof(stud_type));
-    /* Befuell den Speicher */
+    /* Befüll den Speicher */
 	new_student->matnum = matnum;
 	strcpy(new_student->vorname, vorname);
 	strcpy(new_student->nachname, nachname);
-    /* Fueg den neuen Eintrag in die Liste ein */
+    /* Füg den neuen Eintrag in die Liste ein */
     /* Ist die Liste leer ? */
 	if (is_empty(studenten_liste)){
 		*studenten_liste = new_student;
@@ -64,52 +51,122 @@ void enqueue(stud_type** studenten_liste, int matnum, char vorname[20], char nac
 	}
 }
 
-/* Loeschen eines Elementes.
- *
+stud_type* sort_liste(void (*functionPtr)(stud_type* list, stud_type** sorted_list), stud_type* list) {
+	stud_type* sorted_list = NULL;	
+	(*functionPtr)(list, &sorted_list);
+	return sorted_list;
+}
+
+void sort_vorname(stud_type* list, stud_type** sorted_list) {
+	
+	stud_type* pcur;
+	stud_type* scur;
+    	stud_type* previous;
+	char name_p[20];
+	char name_s[20];
+
+	pcur = list;
+        while(pcur != NULL) {		
+		if(is_empty(sorted_list)) {			
+			*sorted_list = pcur;
+			pcur = pcur->next_student;		
+			continue;
+		}
+			
+		scur = *sorted_list;	
+				
+		strcpy(name_p, pcur->vorname);
+		strcpy(name_s, scur->vorname);
+		while(scur != NULL && name_p[0] >= name_s[0]) {
+		    previous = scur;
+		    scur = scur->next_student;
+		}
+	
+		previous->next_student = pcur;
+        	previous->next_student->next_student = scur;
+			
+		pcur = pcur->next_student;
+	}
+}	
+
+void sort_nachname(stud_type* list, stud_type** sorted_list) {
+	stud_type* pcur;
+	stud_type* scur;
+    	stud_type* previous;
+	char name_p[20];
+	char name_s[20];
+
+	pcur = list;
+        while(pcur != NULL) {		
+		if(is_empty(sorted_list)) {			
+			*sorted_list = pcur;
+			pcur = pcur->next_student;			
+			continue;
+		}
+			
+		scur = *sorted_list;	
+				
+		strcpy(name_p, pcur->nachname);
+		strcpy(name_s, scur->nachname);
+
+		while(scur != NULL && name_p[0] >= name_s[0]) {
+		    previous = scur;
+		    scur = scur->next_student;
+		}
+	
+		previous->next_student = pcur;
+        	previous->next_student->next_student = scur;
+			
+		pcur = pcur->next_student;
+	}
+}
+
+/* Löschen eines Elementes. 
+ * 
  * Bekommt einen Zeiger auf einen Zeiger der auf das 1. Element der Liste zeigt
- * Bekommt die MatNr des Studenten der zu loeschen ist
+ * Bekommt die MatNr des Studenten der zu löschen ist
  *
- * Gibt 0 fuer einen Fehler zurueck
- * Gibt 1 fuer Erfolg zurueck
+ * Gibt 0 für einen Fehler zurück
+ * Gibt 1 für Erfolg zurück
  */
 int dequeue(stud_type** studenten_liste, int matnum)
 {
-    /* Deklariere benoetigte Variablen -> m*/
+    /* Deklariere benötigte Variablen -> m*/
     stud_type* pcur;
     stud_type* previous;
-    /* Pruefe Randbedingungen */
+    /* Prüfe Randbedingungen */
 	if(is_empty(studenten_liste)) return 0;
     /* Finde den Studenten */
-    /* Was muss passieren wenn das 1. Element geloescht wird? */
+    /* Was muss passieren wenn das 1. Element gelöscht wird? */
 	pcur = *studenten_liste;
 	if((*studenten_liste)->matnum == matnum){
 		(*studenten_liste) = (*studenten_liste)->next_student;
 		free(pcur);
 		return 1;
 	}
-
+	
 	while(pcur != NULL && pcur->matnum != matnum){
 		previous = pcur;
         pcur = pcur->next_student;
 	}
-
+	
 	if(pcur == NULL) {
         return 0;
     }
-    /* Loesche den Studenten und gibt den Speicher frei */
+    /* Lösche den Studenten und gibt den Speicher frei */
 	if(pcur->matnum == matnum){
 		previous->next_student = pcur->next_student;
 		free(pcur);
 		return 1;
 	}
-
+    
     /* Was ist wenn es nicht in der Liste ist? */
 	else return 0;
     /* ... */
-
+    
 }
 
-/* Auslesen eines Elementes
+/* Auslesen eines Elementes 
  *
  * Bekommt zeiger auf den Listenstart
  * Bekommt matnr des Studenten der ausgelesen werden soll
@@ -127,27 +184,27 @@ int get_student(stud_type* studenten_liste, int matnum, char vorname[20], char n
     }
 
     if ((curr == NULL) || (curr->matnum != matnum)) {
-        /* Rueckgabewert: Fehler */
+        /* Rückgabewert: Fehler */
         return 0;
     } else {
        strncpy(vorname, curr->vorname, 20);
        strncpy(nachname, curr->nachname, 20);
-        /* Rueckgabewert: OK */
+        /* Rückgabewert: OK */
        return 1;
    }
 }
 
 
 /* Test der Listenfunktionen  */
-int main(void)
+int main(void)                                   
 {
     /* Initialisierung der Datenbank */
     stud_type *studenten_liste = NULL;
-    /* platz fuer vorname */
+    /* platz für vorname */
     char vorname[20];
-    /* platz fuer nachname */
+    /* platz für nachname */
     char nachname[20];
-    /* zeiger fuer iteration */
+    /* zeiger für iteration */
     stud_type *curr;
 
     printf(">>> Fuege neuen Studenten in die Liste ein: Eddard Stark [1234] ...\n");
@@ -189,9 +246,9 @@ int main(void)
     } else {
         printf("    Matrikelnummer %4i ist unbekannt\n", 5678);
     }
-
+ 
     printf(">>> Loesche die Matrikelnummer 9998 ...\n");
-
+ 
     if(dequeue(&studenten_liste, 9998)) {
         printf("    Matrikelnummer %4i geloescht\n", 9998);
     } else {
@@ -213,6 +270,19 @@ int main(void)
         printf("    Matrikelnummer %4i: %s %s\n", curr->matnum, curr->vorname, curr->nachname);
         curr = curr->next_student;
     }
+    
+//Sort Parts
+    void (*sortPtr)(stud_type* list, stud_type** sorted_list);
+    stud_type* sortierte_liste = NULL;
+    sortPtr = &sort_vorname;
+    sortierte_liste = sort_liste(sortPtr, studenten_liste);
+    
+    printf(">>> Gebe alle erfassten Studenten aus ...\n");
+    curr = sortierte_liste;
 
+    while(curr != NULL) {
+        printf("    Matrikelnummer %4i: %s %s\n", curr->matnum, curr->vorname, curr->nachname);
+        curr = curr->next_student;
+    }
     return 0;
 }
