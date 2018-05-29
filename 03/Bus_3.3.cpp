@@ -4,6 +4,7 @@
 #include "stdafx.h"
 
 #define MAXQUANTUM 13;
+#define MINQUANTUM 1;
 
 struct prozess {
 	int bearbeitungszeit;
@@ -22,7 +23,7 @@ int main()
 	printf("Quantum  P1  P2  P3  P4  P5  P6  P7  P8\n");
 	printf("---------------------------------------\n");
 	
-	for(int q=1; q<MAXQUANTUM+1; q++) {
+	for(int q=MINQUANTUM; q<MAXQUANTUM+1; q++) {
 
 		for(int i=0; i<8; i++) {
 			list[i].endtime = 0;
