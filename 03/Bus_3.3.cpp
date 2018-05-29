@@ -1,10 +1,7 @@
-// Bus_3.3.cpp : Definiert den Einstiegspunkt für die Konsolenanwendung.
-//
+#include <stdio.h>
 
-#include "stdafx.h"
-
-#define MAXQUANTUM 13;
-#define MINQUANTUM 1;
+int MAXQUANTUM = 13;
+int MINQUANTUM = 1;
 
 struct prozess {
 	int bearbeitungszeit;
@@ -16,7 +13,7 @@ int main()
 	int dur[8] = {6, 13, 7, 3, 4, 9, 10, 11};
 	struct prozess list[8];
 
-	int avg;
+	float avg;
 	int counter;
 	int time;
 	int quantum;
@@ -26,6 +23,7 @@ int main()
 	
 	for(int q=MINQUANTUM; q<MAXQUANTUM+1; q++) {
 
+		//Initaliserung der Laufzeitvariabeln
 		avg = 0;
 		
 		for(int i=0; i<8; i++) {
@@ -38,6 +36,7 @@ int main()
 		time = 0;
 		quantum = q;
 
+		//berechnen der aktuellen Prozesszeit
 		while(counter != 8) {
 			for(int j=0; j<8; j++)
 			{
@@ -55,6 +54,7 @@ int main()
 			}
 		}
 		
+		//Ausgabe
 		printf("%i        ", quantum);
 		
 		for(int i=0; i<8; i++) {
@@ -62,11 +62,9 @@ int main()
 			printf("%i  ", list[i].endtime);
 		}
 		avg = avg/8;
-		printf("%i  ", avg);
+		printf("%f  ", avg);
 		printf("\n");
 	}
 
-	getchar();
 	return 0;
 }
-
