@@ -1,7 +1,9 @@
-// Bus_3.3.cpp : Definiert den Einstiegspunkt für die Konsolenanwendung.
+// Bus_3.3.cpp : Definiert den Einstiegspunkt fÃ¼r die Konsolenanwendung.
 //
 
 #include "stdafx.h"
+
+#define MAXQUANTUM 13;
 
 struct prozess {
 	int bearbeitungszeit;
@@ -20,7 +22,7 @@ int main()
 	printf("Quantum  P1  P2  P3  P4  P5  P6  P7  P8\n");
 	printf("---------------------------------------\n");
 	
-	for(int q=1; q<14; q++) {
+	for(int q=1; q<MAXQUANTUM+1; q++) {
 
 		for(int i=0; i<8; i++) {
 			list[i].endtime = 0;
