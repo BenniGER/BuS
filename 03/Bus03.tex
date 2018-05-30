@@ -79,16 +79,18 @@ Daraus folgt insgesamt ist für größere Prozesskommunikation ein Shared Memory
 
 \textbf{b)}
 
-Der wesentliche Unterschied zwischen Dateien und benannten Pipes ist, dass benannte Pipes immer nur eine Schreiben/ Lesen Operation ausühren bevor sie sich wieder schließen. Zudem können Daten die einmal hineingeschrieben wurden auch nur einmal von einem anderen Prozess ausgelesen werden. Zuletzt können bei bennanten Pipes auch nur wie bei normalen Pipes nur ein Prozess gleichzeitig auf diesem arbeiten. Bei einer Datei könnten es mehrere Gleichzeitg an unterschiedlichen Stellen.
+Der wesentliche Unterschied zwischen Dateien und benannten Pipes ist, dass benannte Pipes immer nur eine Schreiben/ Lesen Operation ausühren bevor sie sich wieder schließen. Zudem können Daten die einmal hineingeschrieben wurden auch nur einmal von einem anderen Prozess ausgelesen werden. Zuletzt können bei bennanten Pipes auch nur wie bei normalen Pipes nur ein Prozess gleichzeitig auf diesem arbeiten. Bei einer Datei könnten es mehrere Gleichzeitig an unterschiedlichen Stellen.
 
 
 \textbf{c)}
-Prozesse: laufen in shared memory, Kann kein teil eines Threads sein, kann ein oder mehr Threads enthalten\\
+Prozesse: laufen in shared memory, Kann kein Teil eines Threads sein, kann ein oder mehr Threads enthalten\\
 Threads: laufen in seperaten Speicher Bereichen, Teil eines Prozesses \\
 
-\textbf{d)}
-
 \newpage
+
+\textbf{d)}
+Werden User-Threads verwendet, gibt es nur einen Stack für den gesamten Prozess, da die Implementierung des Threads bereits im Programm passiert und der Kernel nur den gesamten Prozess sieht. Allerdings ist der Stack den der gesamte Prozess hat irgendwie eingeteilt, da jeder Thread einzeln abläuft. Diese Aufteilung wird aber vorher im Programm unternommen und der Kernel bekommt davon nichts mit. \\
+Bei Kernel-Threads dagegen hat jeder Thread einen eigenen Stack, da hier die Threads durch den Kernel erstellt wurden. Hier kann auch durch den Kernel zwischen den Threads gewechselt werden (z.B. wenn ein Thread blockiert), das ist beim User-Thread nicht möglich.
 
 \aufgabe{3.2}
 
