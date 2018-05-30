@@ -59,12 +59,28 @@
 \aufgabe{3.1}
 
 \textbf{a)}
-Pipes: Kann zwischen Blockierend und nicht Blockierend wechseln, muss nicht wieder frei gegeben werden, automatisch an Kinder vererbbar
-\\
-Shared memory: Kann structures speichern, kann nicht blockiert werden -> kann von so vielen Programmen genutzt werden wie man will\\
+
+Bei einer Pipe können Daten immer nur in eine Richtung fließen. Ein Prozess kann praktisch immer nur in eine Pipe schreiben oder aus einer Pipe lesen. 
+Um gleichzeitig lesen und schreiben zu können werden mindestens 2 Pipes benötigt.
+Bei großen Prozessanzahlen mit hoher Kommunikation werden demnach exponentiell viele Pipes benötigt --> mehr Aufwand, komplexere Strukturen.
+
+(Pipes: Kann zwischen Blockierend und nicht Blockierend wechseln, muss nicht wieder frei gegeben werden, automatisch an Kinder vererbbar)
+
+
+Bei einem Shared Memory wird ein vom Kernel verwalteter Speicherbereich verwendet, auf den mehrere Prozesse zusammen Zugriff haben. Hierbei ist zu beachten, dass damit keine Kollision oder anderer Fehler beim Schreiben oder lesen von einem Prozess auf dem Shared Memory auftritt, alle Prozesses die auf diesen Speicher Zugriff haben synchronisiert werden müssen. 
+Diese Synchronisation ist zwar aufwändiger als einzelne Pipes zu benutzen, dafür aber konstant bei auch sehr großen Prozessanzahlen.
+
+(Shared memory: Kann structures speichern, kann nicht blockiert werden -> kann von so vielen Programmen genutzt werden wie man will)
+
+Daraus folgt insgesamt ist für größere Prozesskommunikation ein Shared Memory sinnvoller und für kleinere Kommunikation zwischen wenigen Prozessen ist es einfacher bzw. schneller Pipes zu verwenden.
+
+
+
 
 \textbf{b)}
-Greifen bei einer benannten Pipe mehrere Prozesse auf sie zu, kann nur einer einen Eintrag lesen, da der Lesevorgang die Nachricht aus der Pipe entfernt.
+
+Der wesentliche Unterschied zwischen Dateien und benannten Pipes ist, dass benannte Pipes immer nur eine Schreiben/ Lesen Operation ausühren bevor sie sich wieder schließen. Zudem können Daten die einmal hineingeschrieben wurden auch nur einmal von einem anderen Prozess ausgelesen werden. Zuletzt können bei bennanten Pipes auch nur wie bei normalen Pipes nur ein Prozess gleichzeitig auf diesem arbeiten. Bei einer Datei könnten es mehrere Gleichzeitg an unterschiedlichen Stellen.
+
 
 \textbf{c)}
 Prozesse: laufen in shared memory, Kann kein teil eines Threads sein, kann ein oder mehr Threads enthalten\\
@@ -72,9 +88,34 @@ Threads: laufen in seperaten Speicher Bereichen, Teil eines Prozesses \\
 
 \textbf{d)}
 
+\newpage
+
 \aufgabe{3.2}
 
 \textbf{a)}
 
+In diesem Programm wird eine Kommunikation über ein Shared Memory ohne Prozesssynchronisation genutzt.
+
+Zeile 18:
+Hier wird der Prozess mit der ID id an ein freies Shared Memory angehängt auf dem er arbeiten soll
+Im schritt danach wird dieses Shared Memory auf den Wert 0 initialsiert.
+
+In der folgenden Schleife wird für eine vordefinierte Anzahl von „Kindern“ Kindzprozesse vom Vater gebildet.
+Für jeden dieser Kindsprozesse wird dann überprüft ob dieser erzeugt werden konnte. Wenn nein terminiert hier das Programm.
+
+Ansonsten wird danach überprüft ob der … und das Shared Memory solange hochgezählt bis der vordefinierte Maximalwert vom Prozesss gelesen wird.
+
+Der Vaterprozess wartet dann auf das Terminieren all seiner Kindsprozesse.
+
+Danach wird erst der Shared Memory vom Vaterprozess gelöst und im anschluss selbst gelöscht.
+
+
 \textbf{b)}
+
+1. Auffälligkeit:
+Die Summe der einzelnen Kindzprozesse ist ungleich der Anzahl von MAXCOUNT. Das liegt daran dass wenn ein Kindsprozess den Wert liest und dieser kleiner ist und dann darauf folgend von einem anderen Kindsprozess verändert wird, setzt der erste Kindsprozessbeim schreiben alles in der zwischenzeit geschehene zurück, was dazu führt das in der Summe mehr aller Prozesse ein größerer Wert als MAXCOUNT heraus kommt.
+
+2. Auffälligkeit:
+Das Verhältnis zwischen den Anzahlen der einzelnen Prozesse ist in jedem Durchlauf komplett anders. Das heißt die Prozessverteilung und die Interrupts die auf diese Einwirken sind bei jedem Durchlauf andere und somit kommt es zu stetigen nicht vorraussagenden Verhältnissen zwischen den Anzahlen der Prozesse.
+
 \end{document}
