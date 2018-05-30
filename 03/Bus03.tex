@@ -102,10 +102,11 @@ Zeile 18:
 Hier wird der Prozess mit der ID id an ein freies Shared Memory angehängt auf dem er arbeiten soll
 Im schritt danach wird dieses Shared Memory auf den Wert 0 initialsiert.
 
-In der folgenden Schleife wird für eine vordefinierte Anzahl von „Kindern“ Kindzprozesse vom Vater gebildet.
+In der folgenden Schleife wird für eine vordefinierte Anzahl von „Kindern“ Kindsprozesse vom Vater gebildet.
 Für jeden dieser Kindsprozesse wird dann überprüft ob dieser erzeugt werden konnte. Wenn nein terminiert hier das Programm.
 
-Ansonsten wird danach überprüft ob der … und das Shared Memory solange hochgezählt bis der vordefinierte Maximalwert vom Prozesss gelesen wird.
+Nach dem ein Kindprozess erzeugt wurde, zählt er die gemeinsame Zählvariable und eine eigene Zählvariable solange hoch, bis der Wert \texttt{MAXCOUNT} erreicht wird. Danach gibt der jeweilige Kindsprozess noch den Wert seiner eigenen Zählvariable aus, also seinen Anteil am hochzählen der gemeinsamen Variable.
+Der Vaterprozess dagegen erzeugt weitere Kinder, da bei ihm der Wert von \texttt{pid[i]} nicht \texttt{0} ist.
 
 Der Vaterprozess wartet dann auf das Terminieren all seiner Kindsprozesse.
 
@@ -115,7 +116,7 @@ Danach wird erst der Shared Memory vom Vaterprozess gelöst und im anschluss sel
 \textbf{b)}
 
 1. Auffälligkeit:
-Die Summe der einzelnen Kindzprozesse ist ungleich der Anzahl von MAXCOUNT. Das liegt daran dass wenn ein Kindsprozess den Wert liest und dieser kleiner ist und dann darauf folgend von einem anderen Kindsprozess verändert wird, setzt der erste Kindsprozessbeim schreiben alles in der zwischenzeit geschehene zurück, was dazu führt das in der Summe mehr aller Prozesse ein größerer Wert als MAXCOUNT heraus kommt.
+Die Summe der einzelnen Kindzprozesse ist ungleich der Anzahl von \texttt{MAXCOUNT}. Das liegt daran dass wenn ein Kindsprozess den Wert liest und dieser kleiner ist und dann darauf folgend von einem anderen Kindsprozess verändert wird, setzt der erste Kindsprozessbeim schreiben alles in der zwischenzeit geschehene zurück, was dazu führt das in der Summe mehr aller Prozesse ein größerer Wert als \texttt{MAXCOUNT} heraus kommt.
 
 2. Auffälligkeit:
 Das Verhältnis zwischen den Anzahlen der einzelnen Prozesse ist in jedem Durchlauf komplett anders. Das heißt die Prozessverteilung und die Interrupts die auf diese Einwirken sind bei jedem Durchlauf andere und somit kommt es zu stetigen nicht vorraussagenden Verhältnissen zwischen den Anzahlen der Prozesse.
