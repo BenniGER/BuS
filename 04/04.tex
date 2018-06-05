@@ -73,8 +73,6 @@
 
     Die durchschnittliche Wartezeit liegt hier bei 11,5 Zeiteinheiten.
 
-    \textbf{TODO} durchschnittliche Wartezeit, auch bei den anderen
-
     \textbf{b)}
 
     \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
@@ -101,8 +99,6 @@
 
     \textbf{d)} 
 
-    Das hier sieht noch etwas komisch aus..
-
     \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
         \multicolumn{3}{l}{0} & \multicolumn{6}{c}{5} & \multicolumn{4}{c}{10} & \multicolumn{6}{c}{15} & \multicolumn{4}{c}{20} & \multicolumn{6}{c}{25} & \multicolumn{3}{r}{30} \\
         & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\
@@ -112,6 +108,58 @@
     \end{tabular}
     
     Die durchschnittliche Wartezeit liegt bei 4,67 Zeiteinheiten.
+
+
+\aufgabe{4.3}
+
+\begin{tabular}{r|l|l|l|l|l|l}
+t  & Kl. 0 FIFO(1) & Kl. 1 $RR_2$(4)                              & Kl. 2 $RR_6$(16)                & Kl. 3 FIFO(-1)  & Incoming  & Running \\
+\hline
+\phantom{\huge{X}}0  & -             & -                                            & -                               & -               & A(7),B(6) & -       \\
+\hline
+\phantom{\huge{X}}1  & & A(7) & B(6) & & C(1) & A(7) \\
+\hline
+\phantom{\huge{X}}2  & C(1) & A(6) & B(6) & & D(2) & C(1)\\
+\hline
+\phantom{\huge{X}}3  & & D(2),A(6) & B(6) & & & A(6)\\
+\hline
+\phantom{\huge{X}}4  & & D(2),A(5) & B(6) & & & D(2)\\
+\hline
+\phantom{\huge{X}}5  & & D(1),A(5) & B(6) & & E(17) & D(1) \\
+\hline
+\phantom{\huge{X}}6  & & A(5) & B(6) & E(17) & & A(5) \\
+\hline
+\phantom{\huge{X}}7  & & A(4) & B(6) & E(17) & & A(4) \\
+\hline
+\phantom{\huge{X}}8  & & & A(4),B(6) & E(17) & &  B(6) \\
+\hline
+\phantom{\huge{X}}9  & & & A(4),B(5) & E(17) & & B(5) \\
+\hline
+\phantom{\huge{X}}10  & & & A(4),B(4) & E(17) & F(3) & B(4) \\
+\hline
+\phantom{\huge{X}}11  & & F(3) & A(4),B(3) & E(17) & & F(3)\\
+\hline
+\phantom{\huge{X}}12  & & F(2) & A(4),B(3) & E(17) & & F(2) \\
+\hline
+\phantom{\huge{X}}13  & & F(1) & A(4),B(3) & E(17) & G(5) & F(1) \\
+\hline
+\phantom{\huge{X}}14  & G(5) & & A(4),B(3) & E(17) & & G(5)\\
+\hline
+\phantom{\huge{X}}15  & & G(4) & A(4),B(3) & E(17) & H(3) & G(4) \\
+\hline
+\phantom{\huge{X}}16  & & G(3),H(3) & A(4),B(3) & E(17) & I(3) & G(3)\\
+\hline
+\phantom{\huge{X}}17  & & G(2),H(3),I(3) & A(4),B(3) & E(17) & & H(3) \\
+\hline
+\phantom{\huge{X}}18  & & G(2),H(2),I(3) & A(4),B(3) & & & H(2) \\
+\hline
+\phantom{\huge{X}}19  & & G(2),H(1),I(3) & & & & G(2) \\
+\hline
+\phantom{\huge{X}}20  & & G(1),H(1),I(3) & & & & G(1) \\
+\hline
+\end{tabular}
+
+
 
 \textbf{Aus dem Template}
  
