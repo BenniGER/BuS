@@ -19,6 +19,9 @@
     
     \newcommand{\aufgabe}[1]{\subsection*{Aufgabe #1}}
     \newcommand{\up}[2]{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny #2}}}{#1}}}
+
+    \newcommand{\prozess}[2]{\multicolumn{#2}{|c}{$P_{#1}$}}
+    \newcommand{\schluss}[1]{\multicolumn{#1}{|c|}{\dots}}
     
     \usepackage{listings}
     \usepackage{color}
@@ -58,12 +61,50 @@
     
     \aufgabe{4.1}
 
+    \textbf{a)}
+
     \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
         \multicolumn{3}{l}{0} & \multicolumn{6}{c}{5} & \multicolumn{4}{c}{10} & \multicolumn{6}{c}{15} & \multicolumn{4}{c}{20} & \multicolumn{6}{c}{25} & \multicolumn{3}{r}{30} \\
         & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\
-        \hline 
-        
-
+        \cline{2-31}
+        & \multicolumn{6}{|c}{$P_1$} & \multicolumn{2}{|c}{$P_2$} & \multicolumn{7}{|c}{$P_3$} & \multicolumn{3}{|c}{$P_4$} & \multicolumn{4}{|c}{$P_5$} & \multicolumn{6}{|c|}{$P_6$} & \multicolumn{2}{c|}{\dots}\\
+        \cline{2-31}
     \end{tabular}
+
+    \textbf{TODO} durchschnittliche Wartezeit, auch bei den anderen
+
+    \textbf{b)}
+
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+        \multicolumn{3}{l}{0} & \multicolumn{6}{c}{5} & \multicolumn{4}{c}{10} & \multicolumn{6}{c}{15} & \multicolumn{4}{c}{20} & \multicolumn{6}{c}{25} & \multicolumn{3}{r}{30} \\
+        & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\
+        \cline{2-31}
+        & \prozess{6}{6} & \prozess{5}{4} & \prozess{4}{3} & \prozess{3}{7} & \prozess{2}{2} & \prozess{1}{6} & \schluss{2} \\
+        \cline{2-31}
+    \end{tabular}
+
+    \textbf{c)}
+
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+        \multicolumn{3}{l}{0} & \multicolumn{6}{c}{5} & \multicolumn{4}{c}{10} & \multicolumn{6}{c}{15} & \multicolumn{4}{c}{20} & \multicolumn{6}{c}{25} & \multicolumn{3}{r}{30} \\
+        & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\
+        \cline{2-31}
+        & \prozess{2}{2} & \prozess{4}{3} & \prozess{5}{4} & \prozess{1}{6} & \prozess{6}{6} & \prozess{3}{7} & \schluss{2} \\
+        \cline{2-31}
+    \end{tabular}
+
+    \textbf{d)} 
+
+    Das hier sieht noch etwas komisch aus..
+
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+        \multicolumn{3}{l}{0} & \multicolumn{6}{c}{5} & \multicolumn{4}{c}{10} & \multicolumn{6}{c}{15} & \multicolumn{4}{c}{20} & \multicolumn{6}{c}{25} & \multicolumn{3}{r}{30} \\
+        & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\
+        \cline{2-31}
+        & \prozess{1}{1} & \prozess{2}{2} & \prozess{4}{3} & \prozess{5}{4} & \prozess{1}{1} & \prozess{6}{2} & \prozess{1}{4} & \prozess{3}{7} & \schluss{6} \\
+        \cline{2-31}
+    \end{tabular}
+
+
     
     \end{document}
