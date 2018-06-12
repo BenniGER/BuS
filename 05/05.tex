@@ -14,6 +14,7 @@
 \usepackage{setspace}
 \usepackage{graphicx,color,curves,epsf,float,rotating}
 \usepackage{tasks}
+\usepackage{booktabs}
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
 
@@ -57,5 +58,127 @@
 \end{center}
 
 \aufgabe{5.1}
+
+\textbf{a)}
+
+{\tiny
+\begin{tabular}{l | l | l}
+Thread 0 		& Thread 1		&  Variable (flag = false)	\\
+\toprule
+while (true) \{  & 			&			\\
+\midrule
+while (flag != false) \{& 		&			\\
+\midrule
+& 			 while(true) \{	 & \\
+\midrule
+	&  	while (flag != false) 	& 			\\
+\midrule
+flag = true 	& 			&	flag = true	\\
+\midrule
+			& flag = true		&	flag = true	\\
+\midrule
+critical\_section() 			& 	& 			\\
+\midrule 
+& critical\_section() & \\
+\bottomrule
+\end{tabular}
+
+\textbf{b)}
+
+{\tiny
+\begin{tabular}{l | l | l}
+Thread 0 		& Thread 1		&  Variable (counter = 0)	\\
+\toprule
+  & while (true) \{	&			\\
+\midrule
+ \{& counter++	&	counter = 1\\
+\midrule
+& 			 if (counter == 3) \{	 &		\\
+\midrule
+	&  	\}	& 			\\
+\midrule
+	& 	\}	& \\
+\midrule
+& while (true) \{	&			\\
+\midrule
+ \{& counter++	&	counter = 2\\
+\midrule
+& 		 if (counter == 3) \{	 &		\\
+\midrule
+	&  	\}	& 			\\
+\midrule
+	& 	\}	& \\
+\midrule
+& while (true) \{	&			\\
+\midrule
+ \{& counter++	&	counter = 3\\
+\midrule
+& 			if (counter == 3) \{	& 		\\
+\midrule
+	&  	critical\_section	& 			\\
+\midrule
+while (true) \{& 		& \\
+\midrule
+counter++ & &	counter = 4	\\
+\midrule
+if (counter == 5) \{	& 	& 			\\
+\midrule 
+\} &  & \\
+\midrule
+\} & & \\
+\midrule
+while (true) \{& 		& \\
+\midrule
+counter++ & &	counter = 5	\\
+\midrule
+if (counter == 5) \{	& 	& 			\\
+\midrule 
+critical\_section() & & \\
+\bottomrule
+\end{tabular}
+
+\textbf{c)}
+
+{\tiny
+\begin{tabular}{l | l | l | l }
+Thread 0 		& Thread 1 & Variable (mutex (unlocked)) & Variable (mutex2 (unlocked))\\
+\toprule
+Monitor.Enter(mutex)  & & mutex (locked by thread 0)	\\
+\midrule
+& Monitor.Enter(mutex) & & mutex2 (locked by thread 1) \\ 
+\bottomrule
+\end{tabular}
+
+{\tiny
+\begin{tabular}{l | l | l}
+Thread 0 		& Thread 1		&  Variable (semaphore [counter: 0])	\\
+\toprule
+while (true) \{  & 			&			\\
+\midrule
+& 	while (true) \{&			\\
+\midrule
+& 	if (semaphore.Wait(500)) \{	& 	 		\\
+\midrule
+	&  	 semaphore.Release() & 	semaphore [counter: 1]	\\
+\midrule
+semaphore.Wait();	& 	&	semaphore [counter: 0] \\
+\midrule
+			& \}	&	\\
+\midrule
+	& \}	& 			\\
+\midrule 
+& while (true) \{ & \\
+\midrule
+ &  semaphore.Release() & 	semaphore [counter: 1]	\\
+\midrule
+& 	while (true) \{&			\\
+\midrule
+& 	if (semaphore.Wait(500)) \{	& semaphore [counter: 0] \\
+\midrule
+& critical\_section() & \\
+\midrule
+critical\_section() & \\
+\bottomrule
+\end{tabular}
 
 \end{document}
