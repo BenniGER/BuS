@@ -181,4 +181,18 @@ critical\_section() & \\
 \bottomrule
 \end{tabular}
 
+\aufgabe{5.2}
+
+\textbf{a)}
+Bounded Waiting \\
+Turn wird mit 0 initialisiert, somit geht P0 nach der Prüfung der Schleife in den kritischen Bereich. P1 wird nun so scheduled das die Schleifenbedingung immer geprüft wird, wenn P0 im kritischen Bereich ist. Turn ist nun immer 0, falls P1 die Schleifenbedingung Prüft . P0 kann damit P1 beliebig oft überholen.
+
+\textbf{b)}
+ Mutal Exclusion \\
+ flag[0] und flag[1] werden mit false initialisiert, somit ist es möglich das das P0 die Schleifenbedingung prüft und dabei unterbrochen wird, bevor flag[0] = true ausgeführt wird. P1 prüft dann auch die Schleifenbedingung und setzt flag[1] = true und geht in den kritischen Bereich. P1 wird durch P0 unterbrochen welches flag[0] = true und anschließend in den kritischen Zustand geht. Damit sind 2 Prozesse im kritischen Zustand.
+ 
+ \textbf{c)}
+ Progress \\
+ flag[0] und flag[1] werden mit false initialisiert. P0 setzt flag[0] = true, anschließend setzt P1 flag[1] = true. Nun befinden sich beide Prozesse in einer Endlosschleife da sie nun jeweils ihre Schleifenbedingung prüfen und noop ausführen. 
+
 \end{document}
