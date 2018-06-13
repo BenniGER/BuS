@@ -1,0 +1,187 @@
+\documentclass[a4paper,graphics,11pt]{article}
+    \pagenumbering{arabic}
+    
+    \usepackage[margin=1in]{geometry}
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage{lmodern}
+    \usepackage[ngerman]{babel}
+    \usepackage{amsmath, tabu}
+    \usepackage{amsthm}
+    \usepackage{amssymb}
+    \usepackage{complexity}
+    \usepackage{mathtools}
+    \usepackage{setspace}
+    \usepackage{graphicx,color,curves,epsf,float,rotating}
+    \usepackage{tasks}
+    \setlength{\parindent}{0em}
+    \setlength{\parskip}{1em}
+    
+    \newcommand{\aufgabe}[1]{\subsection*{Aufgabe #1}}
+    \newcommand{\up}[2]{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny #2}}}{#1}}}
+
+    \newcommand{\prozess}[2]{\multicolumn{#2}{|c}{$P_{#1}$}}
+    \newcommand{\schluss}[1]{\multicolumn{#1}{|c|}{\dots}}
+    
+    \usepackage{listings}
+    \usepackage{color}
+    
+    \definecolor{dkgreen}{rgb}{0,0.6,0}
+    \definecolor{gray}{rgb}{0.5,0.5,0.5}
+    \definecolor{mauve}{rgb}{0.58,0,0.82}
+    
+    \lstset{frame=tb,
+        language=Java,
+        aboveskip=2mm,
+        belowskip=2mm,
+        showstringspaces=false,
+        columns=flexible,
+        basicstyle={\small\ttfamily},
+        numbers=left,
+        numberstyle=\tiny\color{gray},
+        keywordstyle=\color{blue},
+        commentstyle=\color{dkgreen},
+        stringstyle=\color{mauve},
+        breaklines=true,
+        breakatwhitespace=true,
+        tabsize=4,
+        literate={ä}{{\"a}}1 {Ä}{{\"A}}1 {ö}{{\"o}}1 {Ö}{{\"O}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1
+    }
+    
+    \begin{document}
+    \noindent Gruppe \fbox{\textbf{20}}             \hfill Patrick Arens, 377536\\
+    \noindent Betriebssysteme und Systemsoftware    \hfill Georg Manthey 376854\\
+    \strut\hfill Benedikt Gerlach, 376944\\
+    \begin{center}
+        \LARGE{\textbf{Übung 4}}
+    \end{center}
+    \begin{center}
+    \rule[0.1ex]{\textwidth}{1pt}
+    \end{center}
+    
+    \aufgabe{4.1}
+
+    \textbf{a)}
+
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+        \multicolumn{3}{l}{0} & \multicolumn{6}{c}{5} & \multicolumn{4}{c}{10} & \multicolumn{6}{c}{15} & \multicolumn{4}{c}{20} & \multicolumn{6}{c}{25} & \multicolumn{3}{r}{30} \\
+        & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\
+        \cline{2-31}
+        & \multicolumn{6}{|c}{$P_1$} & \multicolumn{2}{|c}{$P_2$} & \multicolumn{7}{|c}{$P_3$} & \multicolumn{3}{|c}{$P_4$} & \multicolumn{4}{|c}{$P_5$} & \multicolumn{6}{|c|}{$P_6$} & \multicolumn{2}{c|}{\dots}\\
+        \cline{2-31}
+    \end{tabular}
+
+    Die durchschnittliche Wartezeit liegt hier bei 11,5 Zeiteinheiten.
+
+    \textbf{b)}
+
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+        \multicolumn{3}{l}{0} & \multicolumn{6}{c}{5} & \multicolumn{4}{c}{10} & \multicolumn{6}{c}{15} & \multicolumn{4}{c}{20} & \multicolumn{6}{c}{25} & \multicolumn{3}{r}{30} \\
+        & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\
+        \cline{2-31}
+        & \prozess{6}{6} & \prozess{5}{4} & \prozess{4}{3} & \prozess{3}{7} & \prozess{2}{2} & \prozess{1}{6} & \schluss{2} \\
+        \cline{2-31}
+    \end{tabular}
+
+    Die durchschnittliche Wartezeit liegt hier bei rund 10,17 Zeiteinheiten.
+
+    \textbf{c)}
+
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+        \multicolumn{3}{l}{0} & \multicolumn{6}{c}{5} & \multicolumn{4}{c}{10} & \multicolumn{6}{c}{15} & \multicolumn{4}{c}{20} & \multicolumn{6}{c}{25} & \multicolumn{3}{r}{30} \\
+        & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\
+        \cline{2-31}
+        & \prozess{2}{2} & \prozess{4}{3} & \prozess{5}{4} & \prozess{1}{6} & \prozess{6}{6} & \prozess{3}{7} & \schluss{2} \\
+        \cline{2-31}
+    \end{tabular}
+
+    Die durchschnittliche Wartezeit liegt bei 8,67 Zeiteinheiten.
+
+    \textbf{d)} 
+
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+        \multicolumn{3}{l}{0} & \multicolumn{6}{c}{5} & \multicolumn{4}{c}{10} & \multicolumn{6}{c}{15} & \multicolumn{4}{c}{20} & \multicolumn{6}{c}{25} & \multicolumn{3}{r}{30} \\
+        & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\
+        \cline{2-31}
+        & \prozess{1}{1} & \prozess{2}{2} & \prozess{4}{3} & \prozess{5}{4} & \prozess{1}{1} & \prozess{6}{2} & \prozess{1}{4} & \prozess{3}{7} & \schluss{6} \\
+        \cline{2-31}
+    \end{tabular}
+    
+    Die durchschnittliche Wartezeit liegt bei 4,67 Zeiteinheiten.
+
+\newpage
+
+\aufgabe{4.2}
+
+\textbf{a)}
+
+\begin{tabular}{l@{}*{22}{@{}p{5mm}@{}|@{}}}
+    &
+    \multicolumn{2}{c}{0} & \multicolumn{3}{c}{ } & \multicolumn{2}{c}{5} & \multicolumn{3}{c}{ } & \multicolumn{2}{c}{10} & \multicolumn{3}{c}{ } & \multicolumn{2}{c}{15} & \multicolumn{3}{c}{ } & \multicolumn{2}{c}{20} \\
+    &&&&&&&&&&&&&&&&&&&&&&\multicolumn{1}{c}{} \\ \cline{3-22}
+    \parbox[c][9mm][c]{10mm}{CPU1} &
+    & \prozess{1}{2} & \prozess{3}{2} & \prozess{5}{3} & \prozess{3}{4} & \prozess{7}{3} & \prozess{1}{5}
+    & \multicolumn{1}{|c|}{}\\ \cline{3-22}
+    \parbox[c][9mm][c]{10mm}{CPU2} &
+    & \prozess{2}{3} & \prozess{4}{3} & \prozess{2}{3} & \prozess{6}{3}
+    & \multicolumn{8}{|c|}{ }     \\ \cline{3-22}
+\end{tabular}
+
+\textbf{b)}
+
+    Es wird nur die Deadline von $P_1$ verletzt, mit einer Verspätung von einer Zeiteinheit.
+
+\textbf{c)}
+
+    Es verbessert die Situation, da dann $P_1$ zum Zeitpunkt 11 zur CPU2 wechseln kann, wodurch er seine Deadline einhalten würde. Dann gäbe es keine Deadline verletzungen mehr und dementsprechend wäre die maximale Verspätung null.
+
+\aufgabe{4.3}
+
+\begin{tabular}{r|l|l|l|l|l|l}
+t  & Kl. 0 FIFO(1) & Kl. 1 $RR_2$(4)                              & Kl. 2 $RR_6$(16)                & Kl. 3 FIFO(-1)  & Incoming  & Running \\
+\hline
+\phantom{\huge{X}}0  & -             & -                                            & -                               & -               & A(7),B(6) & -       \\
+\hline
+\phantom{\huge{X}}1  & & A(7) & B(6) & & C(1) & A(7) \\
+\hline
+\phantom{\huge{X}}2  & C(1) & A(6) & B(6) & & D(2) & C(1)\\
+\hline
+\phantom{\huge{X}}3  & & D(2),A(6) & B(6) & & & A(6)\\
+\hline
+\phantom{\huge{X}}4  & & D(2),A(5) & B(6) & & & D(2)\\
+\hline
+\phantom{\huge{X}}5  & & D(1),A(5) & B(6) & & E(17) & D(1) \\
+\hline
+\phantom{\huge{X}}6  & & A(5) & B(6) & E(17) & & A(5) \\
+\hline
+\phantom{\huge{X}}7  & & A(4) & B(6) & E(17) & & A(4) \\
+\hline
+\phantom{\huge{X}}8  & & & A(4),B(6) & E(17) & &  B(6) \\
+\hline
+\phantom{\huge{X}}9  & & & A(4),B(5) & E(17) & & B(5) \\
+\hline
+\phantom{\huge{X}}10  & & & A(4),B(4) & E(17) & F(3) & B(4) \\
+\hline
+\phantom{\huge{X}}11  & & F(3) & A(4),B(3) & E(17) & & F(3)\\
+\hline
+\phantom{\huge{X}}12  & & F(2) & A(4),B(3) & E(17) & & F(2) \\
+\hline
+\phantom{\huge{X}}13  & & F(1) & A(4),B(3) & E(17) & G(5) & F(1) \\
+\hline
+\phantom{\huge{X}}14  & G(5) & & A(4),B(3) & E(17) & & G(5)\\
+\hline
+\phantom{\huge{X}}15  & & G(4) & A(4),B(3) & E(17) & H(3) & G(4) \\
+\hline
+\phantom{\huge{X}}16  & & G(3),H(3) & A(4),B(3) & E(17) & I(3) & G(3)\\
+\hline
+\phantom{\huge{X}}17  & & G(2),H(3),I(3) & A(4),B(3) & E(17) & & H(3) \\
+\hline
+\phantom{\huge{X}}18  & & G(2),H(2),I(3) & A(4),B(3) & E(17) & & H(2) \\
+\hline
+\phantom{\huge{X}}19  & & G(2),H(1),I(3) & A(4),B(3) & E(17) & & I(3) \\
+\hline
+\phantom{\huge{X}}20  & & G(2),H(1),I(2) & A(4),B(3) & E(17) & & I(2) \\
+\hline
+\end{tabular}
+
+\end{document}

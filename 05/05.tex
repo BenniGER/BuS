@@ -1,0 +1,198 @@
+\documentclass[a4paper,graphics,11pt]{article}
+\pagenumbering{arabic}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath, tabu}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{complexity}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{graphicx,color,curves,epsf,float,rotating}
+\usepackage{tasks}
+\usepackage{booktabs}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+\newcommand{\aufgabe}[1]{\subsection*{Aufgabe #1}}
+\newcommand{\up}[2]{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny #2}}}{#1}}}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+    language=Java,
+    aboveskip=2mm,
+    belowskip=2mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=4,
+    literate={ä}{{\"a}}1 {Ä}{{\"A}}1 {ö}{{\"o}}1 {Ö}{{\"O}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1
+}
+
+\begin{document}
+\noindent Gruppe \fbox{\textbf{20}}             \hfill Patrick Arens, 377536\\
+\noindent Betriebssysteme und Systemsoftware    \hfill Georg Manthey 376854\\
+\strut\hfill Benedikt Gerlach, 376944\\
+\begin{center}
+	\LARGE{\textbf{Übung 5}}
+\end{center}
+\begin{center}
+\rule[0.1ex]{\textwidth}{1pt}
+\end{center}
+
+\aufgabe{5.1}
+
+\textbf{a)}
+
+{\tiny
+\begin{tabular}{l | l | l}
+Thread 0 		& Thread 1		&  Variable (flag = false)	\\
+\toprule
+while (true) \{  & 			&			\\
+\midrule
+while (flag != false) \{& 		&			\\
+\midrule
+& 			 while(true) \{	 & \\
+\midrule
+	&  	while (flag != false) 	& 			\\
+\midrule
+flag = true 	& 			&	flag = true	\\
+\midrule
+			& flag = true		&	flag = true	\\
+\midrule
+critical\_section() 			& 	& 			\\
+\midrule 
+& critical\_section() & \\
+\bottomrule
+\end{tabular}
+
+\textbf{b)}
+
+{\tiny
+\begin{tabular}{l | l | l}
+Thread 0 		& Thread 1		&  Variable (counter = 0)	\\
+\toprule
+  & while (true) \{	&			\\
+\midrule
+ \{& counter++	&	counter = 1\\
+\midrule
+& 			 if (counter == 3) \{	 &		\\
+\midrule
+	&  	\}	& 			\\
+\midrule
+	& 	\}	& \\
+\midrule
+& while (true) \{	&			\\
+\midrule
+ \{& counter++	&	counter = 2\\
+\midrule
+& 		 if (counter == 3) \{	 &		\\
+\midrule
+	&  	\}	& 			\\
+\midrule
+	& 	\}	& \\
+\midrule
+& while (true) \{	&			\\
+\midrule
+ \{& counter++	&	counter = 3\\
+\midrule
+& 			if (counter == 3) \{	& 		\\
+\midrule
+	&  	critical\_section	& 			\\
+\midrule
+while (true) \{& 		& \\
+\midrule
+counter++ & &	counter = 4	\\
+\midrule
+if (counter == 5) \{	& 	& 			\\
+\midrule 
+\} &  & \\
+\midrule
+\} & & \\
+\midrule
+while (true) \{& 		& \\
+\midrule
+counter++ & &	counter = 5	\\
+\midrule
+if (counter == 5) \{	& 	& 			\\
+\midrule 
+critical\_section() & & \\
+\bottomrule
+\end{tabular}
+
+\textbf{c)}
+
+{\tiny
+\begin{tabular}{l | l | l | l }
+Thread 0 		& Thread 1 & Variable (mutex (unlocked)) & Variable (mutex2 (unlocked))\\
+\toprule
+Monitor.Enter(mutex)  & & mutex (locked by thread 0)	\\
+\midrule
+& Monitor.Enter(mutex) & & mutex2 (locked by thread 1) \\ 
+\bottomrule
+\end{tabular}
+
+{\tiny
+\begin{tabular}{l | l | l}
+Thread 0 		& Thread 1		&  Variable (semaphore [counter: 0])	\\
+\toprule
+while (true) \{  & 			&			\\
+\midrule
+& 	while (true) \{&			\\
+\midrule
+& 	if (semaphore.Wait(500)) \{	& 	 		\\
+\midrule
+	&  	 semaphore.Release() & 	semaphore [counter: 1]	\\
+\midrule
+semaphore.Wait();	& 	&	semaphore [counter: 0] \\
+\midrule
+			& \}	&	\\
+\midrule
+	& \}	& 			\\
+\midrule 
+& while (true) \{ & \\
+\midrule
+ &  semaphore.Release() & 	semaphore [counter: 1]	\\
+\midrule
+& 	while (true) \{&			\\
+\midrule
+& 	if (semaphore.Wait(500)) \{	& semaphore [counter: 0] \\
+\midrule
+& critical\_section() & \\
+\midrule
+critical\_section() & \\
+\bottomrule
+\end{tabular}
+
+\aufgabe{5.2}
+
+\textbf{a)}
+Bounded Waiting \\
+Turn wird mit 0 initialisiert, somit geht P0 nach der Prüfung der Schleife in den kritischen Bereich. P1 wird nun so scheduled das die Schleifenbedingung immer geprüft wird, wenn P0 im kritischen Bereich ist. Turn ist nun immer 0, falls P1 die Schleifenbedingung Prüft . P0 kann damit P1 beliebig oft überholen.
+
+\textbf{b)}
+ Mutal Exclusion \\
+ flag[0] und flag[1] werden mit false initialisiert, somit ist es möglich das das P0 die Schleifenbedingung prüft und dabei unterbrochen wird, bevor flag[0] = true ausgeführt wird. P1 prüft dann auch die Schleifenbedingung und setzt flag[1] = true und geht in den kritischen Bereich. P1 wird durch P0 unterbrochen welches flag[0] = true und anschließend in den kritischen Zustand geht. Damit sind 2 Prozesse im kritischen Zustand.
+ 
+ \textbf{c)}
+ Progress \\
+ flag[0] und flag[1] werden mit false initialisiert. P0 setzt flag[0] = true, anschließend setzt P1 flag[1] = true. Nun befinden sich beide Prozesse in einer Endlosschleife da sie nun jeweils ihre Schleifenbedingung prüfen und noop ausführen. 
+
+\end{document}
