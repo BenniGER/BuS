@@ -193,6 +193,22 @@ Turn wird mit 0 initialisiert, somit geht P0 nach der Prüfung der Schleife in d
  
  \textbf{c)}
  Progress \\
- flag[0] und flag[1] werden mit false initialisiert. P0 setzt flag[0] = true, anschließend setzt P1 flag[1] = true. Nun befinden sich beide Prozesse in einer Endlosschleife da sie nun jeweils ihre Schleifenbedingung prüfen und noop ausführen. 
+ flag[0] und flag[1] werden mit false initialisiert. P0 setzt flag[0] = true, anschließend setzt P1 flag[1] = true. Nun befinden sich beide Prozesse in einer Endlosschleife da sie nun jeweils ihre Schleifenbedingung prüfen und noop ausführen.
+ 
+ \aufgabe{5.3}
+
+ \textbf{b)}
+
+ \begin{lstlisting}
+  signal (x) {
+    testinc (x);
+  }
+
+  wait (x) {
+    if (dectest (x) == -1) {
+      testinc (x);
+    }
+  }
+ \end{lstlisting}
 
 \end{document}
