@@ -211,4 +211,68 @@ Turn wird mit 0 initialisiert, somit geht P0 nach der Prüfung der Schleife in d
   }
  \end{lstlisting}
 
+\aufgabe{5.4}
+Die benachbarten Zeilen 07 nutzen nur das gleiche Array aber nicht den selben Speicherbereich darauf.\\
+Würden beide dieser Operationen eine Zeile höher stehen kann es zu einer Mutual Exclusion kommen. Ein Beispielhafter Schedule dazu wäre:\\
+\newline
+\begin{tabular}{l | l | l}
+CPU 1 		& CPU 2		&  Variable flag=(false, false)/ turn	\\
+\toprule
+01 repeat  	& 01 repeat			&			\\
+\midrule
+02 flag[1] = true	&			& flag=(false, true)	\\
+\midrule
+03 turn = 0     	&			& turn=0\\
+\midrule
+04 while(flag[0] and turn=0) \{ 	&			&\\
+\midrule
+07 flag[1]=false	&			& flag=(false, false)\\
+\midrule
+&02 flag[0] = true	& flag=(true, false)	\\
+\midrule
+&03 turn = 1  & turn=1\\
+\midrule
+&04 while(flag[1] and turn=1) \{	&\\
+\midrule
+& 07 flag[0]=false & flag=(false, false)\\
+\midrule
+06 critical section 1 & 06 critical section 0 & Mutual Exclusion\\
+\bottomrule
+09 until false & 09 until false &
+\end{tabular}
+
+\aufgabe{5.5}
+\textbf{a)}\\
+reader()\\
+wait(sync1)\\
+if(sync2)\\
+{signal(sync2);}\\
+init(sync2,1)\\
+dostuff\\
+\\
+\\
+writer()\\
+wait(sync2)\\
+init(sync1, 1)\\
+dostuff;\\
+signal(sync1)\\
+signal(sync2)\\
+\\
+\\
+\textbf{b)}\\
+reader()\\
+wait(sync1)\\
+if(sync2 && !sync3)\\
+{signal(sync2);}\\
+init(sync2,1)\\
+dostuff\\
+\\
+\\
+writer()\\
+init(sync3, 1)\\
+wait(sync2)\\
+init(sync1, 1)\\
+dostuff;\\
+signal(sync1)\\
+signal(sync2)\\
 \end{document}
