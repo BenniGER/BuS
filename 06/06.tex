@@ -17,6 +17,14 @@
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
 
+\usepackage{tikz}
+
+\usetikzlibrary{arrows,positioning,calc,lindenmayersystems,decorations.pathmorphing,intersections}
+\tikzstyle{resource}= [draw,minimum size=16pt,inner sep=0pt]
+\tikzstyle{process} = [draw,minimum size=16pt,inner sep=0pt, rounded corners=3pt]
+\tikzstyle{allocated} = [->,thick,arrows={-latex}]
+\tikzstyle{requested} = [->,thick,arrows={-latex}]
+
 \newcommand{\aufgabe}[1]{\subsection*{Aufgabe #1}}
 \newcommand{\up}[2]{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny #2}}}{#1}}}
 
@@ -57,5 +65,38 @@
 \end{center}
 
 \aufgabe{6.1}
+
+\aufgabe{6.2}
+
+\textbf{a)}
+
+\begin{tikzpicture}[scale=2, node distance=2cm]
+
+    \node (p2)[process] {$P_2$};
+    
+    \node (A)[resource] [above of= p2] {$R_A$};   
+    \node (p1)[process] [right of=A] {$P_1$};
+    \node (D)[resource] [right of=p1] {$R_D$};
+    \node (p3)[process] [below of=D] {$P_3$};
+    \node (B)[resource] [below of=p1] {$R_B$};
+    \node (C)[resource] [below of=p3] {$R_C$};
+    
+
+    \draw[allocated] (A) -- (p1);
+    \draw[allocated] (B) -- (p2);
+    \draw[allocated] (D) -- (p3);
+    \draw[allocated] (C) -- (p3);
+    \draw[requested] (p1) -- (D);
+    \draw[requested] (p2) -- (A);
+    \draw[requested] (p3) -- (B);
+\end{tikzpicture}
+
+Da ein Circular Wait vorliegt, könnte durchaus ein Deadlock auftreten. Es ist auch keine gemeinsame Nutzung von Betriebsmitteln möglich und wir sind auch davon ausgegangen, dass ein Prozess Betriebsmittel anfordert, während er andere Betriebsmittel benutzt. Nun geht allerdings aus der Aufgabenstellung nicht hervor, ob ein Entzug von Betriebsmitteln möglich ist. Wenn ja, liegt kein Deadlock vor, dann könnte nämlich z.B. $P_2$ das Betriebsmittel $R_B$ entzogen werden und $P_3$ könnte seine Arbeit fortsetzen. Wenn ein Entzug nicht möglich wäre, läge ein Deadlock vor da alle Kriterien dafür erfüllt wären.
+
+\textbf{b)}
+
+
+
+
 
 \end{document}
