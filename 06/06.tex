@@ -14,14 +14,18 @@
 \usepackage{setspace}
 \usepackage{graphicx,color,curves,epsf,float,rotating}
 \usepackage{tasks}
+\usepackage{enumitem}
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
 
 \usepackage{tikz}
 
+\definecolor{processblue}{rgb}{0.0, 0.72, 0.92}
+\definecolor{lightgray}{rgb}{0.83, 0.83, 0.83}
+
 \usetikzlibrary{arrows,positioning,calc,lindenmayersystems,decorations.pathmorphing,intersections}
-\tikzstyle{resource}= [draw,minimum size=16pt,inner sep=0pt]
-\tikzstyle{process} = [draw,minimum size=16pt,inner sep=0pt, rounded corners=3pt]
+\tikzstyle{resource}= [draw,minimum size=16pt,inner sep=0pt,fill=processblue]
+\tikzstyle{process} = [draw,minimum size=16pt,inner sep=0pt, rounded corners=3pt, fill=lightgray]
 \tikzstyle{allocated} = [->,thick,arrows={-latex}]
 \tikzstyle{requested} = [->,thick,arrows={-latex}]
 
@@ -95,7 +99,32 @@ Da ein Circular Wait vorliegt, könnte durchaus ein Deadlock auftreten. Es ist a
 
 \textbf{b)}
 
+\begin{enumerate}[label={\roman*)}]
+    \item Diese Aussage stimmt nicht, da die Zeit, die ein Prozess zur Ausführung benötigt, beinahe unabhängig von der Zeit, die es Betriebsmittel benötigt, ist (die Zeit muss nur größer als die längste Zeit die der Prozess ein Betriebsmittel braucht sein). Also kann die benötigte Zeit zum ausführen noch so lang sein, es ist völlig unabhängig davon ob Deadlocks auftreten oder nicht.\\
+    Bsp:\\
+    \begin{tikzpicture}[scale=2, node distance=1.5cm]
+        \node (A) [process] {$A$};
+        \node (X) [resource] [left of=A] {$X$};
+        \node (B) [process] [below of=X] {$B$};
+        \node (Y) [resource] [right of=B] {$Y$};
 
+        \draw[requested] (A) -- (X);
+        \draw[allocated] (X) -- (B);
+        \draw[requested] (B) -- (Y);
+        \draw[allocated] (Y) -- (A);
+    \end{tikzpicture}
+    Sei dies der Zustand zum Zeitpunkt 3, offensichtlich ist ein Deadlock aufgetreten. Nun nehmen wir an, das beide Prozesse die Betriebsmittel $X$ und $Y$ für je eine Zeiteinheit brauchen, während die Prozesse insgesamt je 4 Zeiteinheiten brauchen. Dann ist offensichtlich:
+    $$
+        t_{XA}\cdot t_{XB} + t_{YA}\cdot t_{YB} + t_{ZA} \cdot t_{ZB} < t_A \cdot t_B
+    $$
+    aber es ist trotzdem ein Deadlock aufgetreten.
+    
+    \item Diese Aussage stimmt auch nicht, da z.B. $t_{XA}=t_{YA}=t_{ZA}=t_A-1$ und das gleiche für den Prozess $B$ gelten kann, dabei würde jeder Prozess sofort alle Betriebsmittel anfordern. Wenn nun einer der beiden Prozesse alle Betriebsmittel bekommt, kann er terminieren während der zweite Prozess auf die Betriebsmittel wartet und nachdem der erste Prozess terminiert hat, diese benutzen und selber terminieren.
+
+    \item Diese Aussage stimmt auch nicht, wobei man hier das gleiche Beispiel wie in der Aussage ii) nutzen kann. Dann wäre nämlich $t_{XA}\cdot t_{XB} + t_{YA}\cdot t_{YB} + t_{ZA} \cdot t_{ZB} > t_A \cdot t_B$, aber es tritt nicht unbedingt ein Deadlock auf.
+
+    \item Diese Aussage stimmt auch nicht, hier kann man nun das Beispiel aus Aussage i) nutzen. Es gilt nach dem Beispiel offensichtlich $t_{XA}+t_{YA}+t_{ZA} < t_A$ und $t_{XB} + t_{YB} + t_{ZB} < t_B$, aber es tritt ein Deadlock auf. 
+\end{enumerate}
 
 
 
