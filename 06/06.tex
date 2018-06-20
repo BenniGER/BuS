@@ -67,7 +67,6 @@
 \begin{center}
 \rule[0.1ex]{\textwidth}{1pt}
 \end{center}
-
 \aufgabe{6.1}
 
 \aufgabe{6.2}
@@ -151,6 +150,28 @@ Da jedes nur einmal verwendet werden kann, verzichten wir auf die Punkte in den 
 \end{tikzpicture}  
 
 Hier tritt offensichtlich wieder ein Deadlock auf, mit der gleichen Annahme wie in Aufgabe 6.2 a). Also auch wieder nur, wenn das freigeben von Betriebsmitteln nicht möglich ist.
+\newpage
+\aufgabe{6.4}
+\textbf{a)}\\
+Prozesssynchrosiation nach Banker-Algorithmus:\\
+\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+    & $P_1$ & $P_2$ & $P_3$ & $V_1(Frei)$ & $V_2(Frei)$ & $V_3(Frei)$\\ \hline
+   Q & 0, 2, 1 & 1, 0, 1 & 3, 1, 1 & 9 & 5 & 6\\
+   H & 11, 3, 3 & 4, 6, 5 & 5, 1, 1&&&\\ \hline
+   Q & 0, 2, 1 & 1, 0, 1 & - & 12 & 6 & 7\\
+   H & 11, 3, 3 & 4, 6, 5 & - &&&\\ \hline
+   Q & - & 1, 0, 1 & - & 12 & 8 & 8\\
+   H & - & 4, 6, 5 & - &&&\\ \hline
+   Q & - & - & - & 13 & 8 & 9\\
+   H & - & - & - &&&\\ \hline
+\end{tabular}
+
+Wie zu erkennen ist ist nach dem Banker Algorithmus das System in einem sicheren Zustand. 
+\newline
+\newline
+
+\textbf{b)}\\
+Nein, man kann daraus nicht schließen, dass ein Deadlock auftreten würde. Ein Gegenbeispiel dazu wäre z.B. wenn ein Prozess $P_1$ ein Betriebsmittel $Bm_1$ anfordert und nicht genügend davon frei sind. Würde man jetzt diesem Prozess die vorhandenden Mittel zur Verfügung stellen, könnte zum Beispiel ein zweiter Prozess $P_2$ mit anderen Betriebsmitteln beendet werden. Dieser könnte nach dem Beenden neue $Bm_1$ Mittel freigeben sodass genügend Betriebsmittel zum beenden von $P_1$ vorhanden sind. Somit würde kein Deadlock auftreten obwohl die unzureichende Mittel verteilt wurden.
 
 \aufgabe{6.5}
 
