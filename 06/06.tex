@@ -74,6 +74,8 @@
 
 \textbf{a)}
 
+Da jedes nur einmal verwendet werden kann, verzichten wir auf die Punkte in den Betriebsmitteln, da sowieso stets nur einer da wäre.
+
 \begin{tikzpicture}[scale=2, node distance=2cm]
 
     \node (p2)[process] {$P_2$};
@@ -125,6 +127,30 @@ Da ein Circular Wait vorliegt, könnte durchaus ein Deadlock auftreten. Es ist a
 
     \item Diese Aussage stimmt auch nicht, hier kann man nun das Beispiel aus Aussage i) nutzen. Es gilt nach dem Beispiel offensichtlich $t_{XA}+t_{YA}+t_{ZA} < t_A$ und $t_{XB} + t_{YB} + t_{ZB} < t_B$, aber es tritt ein Deadlock auf. 
 \end{enumerate}
+
+\aufgabe{6.3}
+
+Da jedes nur einmal verwendet werden kann, verzichten wir auf die Punkte in den Betriebsmitteln, da sowieso stets nur einer da wäre.
+
+\begin{tikzpicture}[scale=2, node distance=2.8cm]
+    \node (p2) [process] {$P_2$};
+    \node (C) [resource] [right of=p2] {$C$};
+    \node (p1) [process] [right of=C] {$P_1$};
+    \node (A) [resource] [below of=p1] {$A$};
+    \node (p3) [process] [left of=A] {$P_3$};
+    \node (B) [resource] [left of=p3] {$B$};
+    \node (D) [resource] [above of=p2] {$D$};
+
+    \draw[allocated] (B) -- (p2);
+    \draw[allocated] (A) -- (p3);
+    \draw[allocated] (C) -- (p1);
+    \draw[allocated] (D) -- (p2);
+    \draw[requested] (p2) -- (C);
+    \draw[requested] (p3) -- (B);
+    \draw[requested] (p1) -- (A);
+\end{tikzpicture}  
+
+Hier tritt offensichtlich wieder ein Deadlock auf, mit der gleichen Annahme wie in Aufgabe 6.2 a). Also auch wieder nur, wenn das freigeben von Betriebsmitteln nicht möglich ist.
 
 
 
