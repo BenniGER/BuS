@@ -45,6 +45,7 @@
     literate={ä}{{\"a}}1 {Ä}{{\"A}}1 {ö}{{\"o}}1 {Ö}{{\"O}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1
 }
 
+
 \begin{document}
 \noindent Gruppe \fbox{\textbf{20}}             \hfill Patrick Arens, 377536\\
 \noindent Betriebssysteme und Systemsoftware    \hfill Georg Manthey 376854\\
@@ -186,5 +187,30 @@ Worst-Fit:
     \item Nur die dritte Anforderung ist größer als 128 Byte und wird daher in den 1. Block eingeordnet. Die anderen Anforderungen werden in den zweiten Block eingeordnet und da ihre Summe kleiner als 256 ist (131) ist diese Anforderung erfüllbar.
     \item Diese Anforderung ist nicht erfüllbar, da der Wert der dritten Anforderung größer als 1024 ist und somit nicht eingeordnet werden kann.
 \end{itemize}
+
+
+\aufgabe{7.2}
+\textbf{a)}\\
+siehe folgende Seiten:
+\begin{figure}[ht]
+    \centering
+    	\includegraphics[width=1\textwidth]{7_2_1.jpg}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    	\includegraphics[width=1\textwidth]{7_2_2.jpg}
+\end{figure}
+\newline
+\newline
+\textbf{b)}\\
+Der nach allen 8 Schritten noch größte zusammenhängende Speicherbereich ist 4 MByte groß.\\
+\newline
+Die noch größtmögliche Speicheranforderung ist 4 MByte groß.\\
+\newline
+Da bei einem Buddy-System durch das Freigeben ein Speicherbereich freigegeben werden kann welcher dann einen größeren zur Verfügung stellt, kann der maximale zusammenhängende Speicherbereich unterschiedlich zu dem sein der vergeben werden kann.\\
+\newline
+\textbf{c)}\\
+Für jede Anforderung $y$ geht für den passenden slot  $2^x$ ein Anteil von $2^x-y$ MBytes verloren.
+
 
 \end{document}
