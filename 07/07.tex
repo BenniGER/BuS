@@ -58,4 +58,133 @@
 
 \aufgabe{7.1}
 
+\textbf{a)}
+
+First-Fit:
+\begin{enumerate}
+    \item (389, 256, 3072)
+    \item (256, 3072)
+    \item (256, 2560)
+    \item (256, 289)
+\end{enumerate}
+Für diese Strategie können die Anforderungen erfüllt werden.\\
+\ \\
+Rotating-First-Fit:
+\begin{enumerate}
+    \item (389, 256, 3072)
+    \item (389, 256, 2683)
+    \item (389, 256, 2171)
+    \item Die Anforderung nach 2271 Byte kann nicht mehr erfüllt werden.
+\end{enumerate}
+Für diese Strategie können die Anforderungen also nicht erfüllt werden.\\
+\ \\
+Best-Fit:
+\begin{enumerate}
+    \item (512, 133, 3072)
+    \item (123, 133, 3072)
+    \item (123, 133, 2560)
+    \item (123, 133, 289)
+\end{enumerate}
+Für diese Strategie können die Anforderungen erfüllt werden.\\
+\newpage
+Worst-Fit:
+\begin{enumerate}
+    \item (512, 256, 2949)
+    \item (512, 256, 2560)
+    \item (512, 256, 2048)
+    \item Die Anforderung nach 2271 Byte kann nicht mehr erfüllt werden.
+\end{enumerate}
+Für diese Strategie können die Anforderungen also nicht erfüllt werden.\\
+
+\textbf{b)}
+
+\begin{itemize}
+    \item   Anforderungsreihenfolge: 2271 Byte, 512 Byte, 123 Byte und 389 Byte.\\
+            Speicherbereichsreihenfolge: (3072, 512, 256)\\
+            First-Fit:
+\begin{enumerate}
+    \item (801, 512, 256)
+    \item (289, 512, 256)
+    \item (166, 512, 256)
+    \item (166, 123, 256)
+\end{enumerate}
+Rotating-First-Fit:
+\begin{enumerate}
+    \item (801, 512, 256)
+    \item (801, 256)
+    \item (801, 133)
+    \item (412, 256)
+\end{enumerate}
+Best-Fit:
+\begin{enumerate}
+    \item (801, 512, 256)
+    \item (801, 256)
+    \item (801, 133)
+    \item (412, 256)
+\end{enumerate}
+Worst-Fit:
+\begin{enumerate}
+    \item (801, 512, 256)
+    \item (289, 512, 256)
+    \item (166, 512, 256)
+    \item (166, 123, 256)
+\end{enumerate}
+
+    \item   Anforderungsreihenfolge: 2271 Byte, 512 Byte, 123 Byte und 389 Byte.\\
+            Speicherbereichsreihenfolge: (3072, 512, 256)\\
+            First-Fit und Worst-Fit:
+            \begin{enumerate}
+                \item (801, 512, 256)
+                \item (289, 512, 256)
+                \item (166, 512, 256)
+                \item (166, 123, 256)
+            \end{enumerate}
+            Rotating-First-Fit und Best-Fit:
+            \begin{enumerate}
+                \item (801, 512, 256)
+                \item (801, 256)
+                \item (801, 133)
+                \item (412, 256)
+            \end{enumerate}
+
+        \item   Anforderungsreihenfolge: 123 Byte, 389 Byte, 512 Byte und 2271 Byte.\\
+                Speicherbereichsreihenfolge: (3072, 512, 256)\\
+                Rotating-First-Fit:
+                \begin{enumerate}
+                    \item (2949, 512, 256)
+                    \item (2949, 123, 256)
+                    \item (2437, 123, 133)
+                    \item (166, 123, 256)
+                \end{enumerate}
+                Best-Fit:
+                \begin{enumerate}
+                    \item (3072, 512, 133)
+                    \item (3072, 123, 133)
+                    \item (2560, 123, 256)
+                    \item (289, 123, 256)
+                \end{enumerate}
+                Worst-Fit:
+                \begin{enumerate}
+                    \item (2949, 512, 256)
+                    \item (2560, 512, 256)
+                    \item (2048, 512, 256)
+                    \item Die Anforderung nach 2271 Byte kann nicht mehr erfüllt werden.
+                \end{enumerate}
+                First-Fit:
+                \begin{enumerate}
+                    \item (2949, 512, 256)
+                    \item (2560, 512, 256)
+                    \item (2048, 512, 256)
+                    \item Die Anforderung nach 2271 Byte kann nicht mehr erfüllt werden.
+                \end{enumerate}
+\end{itemize}
+
+\textbf{c)}
+
+\begin{itemize}
+    \item Da alle Anforderungen auf 1024 Byte aufgerundet werden und die Summe der Anforderungen kleiner als 3072 ist (2050), ist diese Anforderung erfüllbar.
+    \item Nur die dritte Anforderung ist größer als 128 Byte und wird daher in den 1. Block eingeordnet. Die anderen Anforderungen werden in den zweiten Block eingeordnet und da ihre Summe kleiner als 256 ist (131) ist diese Anforderung erfüllbar.
+    \item Diese Anforderung ist nicht erfüllbar, da der Wert der dritten Anforderung größer als 1024 ist und somit nicht eingeordnet werden kann.
+\end{itemize}
+
 \end{document}
